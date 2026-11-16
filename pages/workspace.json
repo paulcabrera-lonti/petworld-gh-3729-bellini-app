@@ -1,0 +1,735 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "attributes": [
+            {
+              "property": "core",
+              "value": ""
+            }
+          ],
+          "children": [],
+          "classList": [],
+          "expressions": [
+            {
+              "expression": "'PetWorld'",
+              "to": "label"
+            },
+            {
+              "expression": "true",
+              "to": "visible"
+            },
+            {
+              "expression": "{type: 'state', state: 'workspace', parameters: {}}",
+              "to": "link"
+            },
+            {
+              "expression": "'vertical'",
+              "to": "orientation"
+            },
+            {
+              "expression": "'side-panel'",
+              "to": "menuType"
+            },
+            {
+              "expression": "$ctrl.navItems",
+              "to": "menuItems"
+            },
+            {
+              "expression": "true",
+              "to": "showMenuToggle"
+            },
+            {
+              "expression": "$ctrl.navCollapsed",
+              "to": "isCollapsed"
+            }
+          ],
+          "layout": {
+            "cell": {
+              "growFactor": 0,
+              "mainSize": "auto",
+              "shrinkFactor": 0,
+              "type": "box-item"
+            }
+          },
+          "name": "Navigation",
+          "nodeName": "bln-navigation",
+          "type": "core-component"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "PetWorld / Explorer"
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "text-sm",
+                        "font-medium",
+                        "text-slate-800",
+                        "break-words"
+                      ],
+                      "name": "p"
+                    },
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "A world of companions"
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "mt-1",
+                        "text-xs",
+                        "text-slate-500"
+                      ],
+                      "name": "p"
+                    }
+                  ],
+                  "classList": [
+                    "min-w-0"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "columnStart": 1,
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "div"
+                },
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [],
+                  "expressions": [
+                    {
+                      "expression": "'Focus content'",
+                      "to": "label"
+                    },
+                    {
+                      "expression": "'secondary'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "'Move keyboard focus to the workspace content'",
+                      "to": "tooltip"
+                    },
+                    {
+                      "expression": "$ctrl.focusContent()",
+                      "to": "onClick"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "columnStart": 2,
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "Button",
+                  "nodeName": "bln-button",
+                  "type": "core-component"
+                },
+                {
+                  "children": [
+                    {
+                      "attributes": [
+                        {
+                          "property": "core",
+                          "value": ""
+                        }
+                      ],
+                      "children": [],
+                      "classList": [],
+                      "expressions": [
+                        {
+                          "expression": "'Public API demo'",
+                          "to": "text"
+                        },
+                        {
+                          "expression": "'outline'",
+                          "to": "type"
+                        },
+                        {
+                          "expression": "'default'",
+                          "to": "colorScheme"
+                        },
+                        {
+                          "expression": "'Demo data references; no live availability monitoring'",
+                          "to": "tooltip"
+                        },
+                        {
+                          "expression": "{type: 'font-icon', name: 'paw', style: 'solid', position: 'left'}",
+                          "to": "icon"
+                        }
+                      ],
+                      "name": "Badge",
+                      "nodeName": "bln-badge",
+                      "type": "core-component"
+                    }
+                  ],
+                  "classList": [],
+                  "layout": {
+                    "cell": {
+                      "columnStart": 1,
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "div"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "v1.0"
+                    }
+                  ],
+                  "classList": [
+                    "text-xs",
+                    "text-slate-400"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "columnStart": 2,
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "span"
+                }
+              ],
+              "classList": [
+                "bg-white",
+                "border-b",
+                "border-slate-200",
+                "px-4",
+                "py-4",
+                "md:px-8"
+              ],
+              "layout": {
+                "cell": {
+                  "growFactor": 0,
+                  "mainSize": "auto",
+                  "shrinkFactor": 0,
+                  "type": "box-item"
+                },
+                "container": {
+                  "columnAxisAlignment": "stretch",
+                  "columnGap": "12px",
+                  "columns": [
+                    {
+                      "max": "1fr",
+                      "min": "0",
+                      "type": "minmax"
+                    },
+                    {
+                      "type": "other",
+                      "value": "auto"
+                    }
+                  ],
+                  "rowAxisAlignment": "center",
+                  "rowGap": "12px",
+                  "rows": [
+                    {
+                      "type": "other",
+                      "value": "auto"
+                    }
+                  ],
+                  "type": "grid"
+                }
+              },
+              "name": "div"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "tabindex",
+                  "value": "-1"
+                },
+                {
+                  "property": "aria-label",
+                  "value": "PetWorld explorer content"
+                }
+              ],
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "PETWORLD WORKSPACE"
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "mb-3",
+                        "text-xs",
+                        "font-semibold",
+                        "tracking-widest",
+                        "text-teal-700"
+                      ],
+                      "name": "p"
+                    },
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "A world of companions."
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "text-2xl",
+                        "font-semibold",
+                        "tracking-tight",
+                        "text-slate-900"
+                      ],
+                      "name": "h1"
+                    },
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "Welcome to PetWorld. Explore the pet catalogue, discover countries, and bring two public APIs together in one workspace. Start with the overview or choose a section from the menu."
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "mt-3",
+                        "max-w-2xl",
+                        "text-sm",
+                        "leading-6",
+                        "text-slate-600"
+                      ],
+                      "name": "p"
+                    },
+                    {
+                      "attributes": [
+                        {
+                          "property": "core",
+                          "value": ""
+                        }
+                      ],
+                      "children": [],
+                      "classList": [
+                        "mt-5",
+                        "text-sm",
+                        "text-teal-700"
+                      ],
+                      "expressions": [
+                        {
+                          "expression": "'Open overview'",
+                          "to": "text"
+                        },
+                        {
+                          "expression": "{type: 'state', state: 'workspace.home', parameters: {}}",
+                          "to": "link"
+                        },
+                        {
+                          "expression": "'current_window'",
+                          "to": "openIn"
+                        },
+                        {
+                          "expression": "'Open the PetWorld workspace overview'",
+                          "to": "tooltip"
+                        }
+                      ],
+                      "name": "Link",
+                      "nodeName": "bln-link",
+                      "type": "core-component"
+                    }
+                  ],
+                  "classList": [
+                    "rounded-lg",
+                    "border",
+                    "border-slate-200",
+                    "bg-white",
+                    "p-6",
+                    "md:p-8"
+                  ],
+                  "comments": "Parent fallback remains available before the default-entry redirect completes or if it fails. Open overview is the existing declarative workspace.home link.",
+                  "displayExpression": "$ctrl.isShellOnly",
+                  "layout": {
+                    "cell": {
+                      "growFactor": 0,
+                      "mainSize": "auto",
+                      "shrinkFactor": 0,
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "section"
+                },
+                {
+                  "children": [],
+                  "classList": [
+                    "min-w-0",
+                    "min-h-48",
+                    "w-full"
+                  ],
+                  "comments": "Router-owned outlet. Completed children home, pets, pet-detail and countries use parentPageName workspace. Keep the shell persistent; do not duplicate navigation in child pages. Minimum height prevents empty content from collapsing.",
+                  "layout": {
+                    "cell": {
+                      "growFactor": 1,
+                      "mainSize": "auto",
+                      "shrinkFactor": 0,
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "child-pages",
+                  "type": "page-container"
+                },
+                {
+                  "attributes": [
+                    {
+                      "property": "aria-label",
+                      "value": "Demo data sources"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "Two APIs. One workspace."
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "text-sm",
+                        "font-medium",
+                        "text-slate-800"
+                      ],
+                      "layout": {
+                        "cell": {
+                          "type": "box-item"
+                        }
+                      },
+                      "name": "h2"
+                    },
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "External demo data references. Shared sample records may change; these links do not indicate service health."
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "text-xs",
+                        "leading-5",
+                        "text-slate-500"
+                      ],
+                      "layout": {
+                        "cell": {
+                          "type": "box-item"
+                        }
+                      },
+                      "name": "p"
+                    },
+                    {
+                      "attributes": [
+                        {
+                          "property": "core",
+                          "value": ""
+                        }
+                      ],
+                      "children": [],
+                      "classList": [
+                        "text-sm",
+                        "text-teal-700",
+                        "break-all"
+                      ],
+                      "expressions": [
+                        {
+                          "expression": "'Petstore v2 — demo API reference (opens new tab)'",
+                          "to": "text"
+                        },
+                        {
+                          "expression": "{type: 'url', path: 'https://petstore.swagger.io/', evaluate: false}",
+                          "to": "link"
+                        },
+                        {
+                          "expression": "'new_window'",
+                          "to": "openIn"
+                        },
+                        {
+                          "expression": "'Swagger Petstore v2 API reference (opens new tab)'",
+                          "to": "tooltip"
+                        }
+                      ],
+                      "layout": {
+                        "cell": {
+                          "type": "box-item"
+                        }
+                      },
+                      "name": "Link",
+                      "nodeName": "bln-link",
+                      "type": "core-component"
+                    },
+                    {
+                      "attributes": [
+                        {
+                          "property": "core",
+                          "value": ""
+                        }
+                      ],
+                      "children": [],
+                      "classList": [
+                        "text-sm",
+                        "text-teal-700",
+                        "break-all"
+                      ],
+                      "expressions": [
+                        {
+                          "expression": "'Countries — GraphQL API reference (opens new tab)'",
+                          "to": "text"
+                        },
+                        {
+                          "expression": "{type: 'url', path: 'https://countries.trevorblades.com/', evaluate: false}",
+                          "to": "link"
+                        },
+                        {
+                          "expression": "'new_window'",
+                          "to": "openIn"
+                        },
+                        {
+                          "expression": "'Countries GraphQL API reference and explorer (opens new tab)'",
+                          "to": "tooltip"
+                        }
+                      ],
+                      "layout": {
+                        "cell": {
+                          "type": "box-item"
+                        }
+                      },
+                      "name": "Link",
+                      "nodeName": "bln-link",
+                      "type": "core-component"
+                    }
+                  ],
+                  "classList": [
+                    "rounded-lg",
+                    "border",
+                    "border-slate-200",
+                    "bg-white",
+                    "p-5"
+                  ],
+                  "comments": "External references only, not fake live health. Placed here because core Navigation has no sidebar-footer content slot.",
+                  "layout": {
+                    "cell": {
+                      "growFactor": 0,
+                      "mainSize": "auto",
+                      "shrinkFactor": 0,
+                      "type": "box-item"
+                    },
+                    "container": {
+                      "crossAxisAlignment": "stretch",
+                      "gap": "12px",
+                      "mainAxisAlignment": "flex-start",
+                      "orientation": "column",
+                      "type": "box"
+                    }
+                  },
+                  "name": "section"
+                }
+              ],
+              "classList": [
+                "min-w-0",
+                "min-h-[60vh]",
+                "w-full",
+                "max-w-6xl",
+                "mx-auto",
+                "p-4",
+                "md:p-8",
+                "focus-visible:outline",
+                "focus-visible:outline-2",
+                "focus-visible:outline-teal-600",
+                "focus-visible:outline-offset-[-2px]"
+              ],
+              "comments": "Main content grows within the shell and retains a minimum height even with an empty route outlet.",
+              "elementId": "petworld-workspace-content",
+              "layout": {
+                "cell": {
+                  "growFactor": 1,
+                  "mainSize": "auto",
+                  "shrinkFactor": 0,
+                  "type": "box-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "stretch",
+                  "gap": "24px",
+                  "mainAxisAlignment": "flex-start",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "main"
+            }
+          ],
+          "classList": [
+            "min-w-0",
+            "overflow-auto",
+            "bg-slate-50",
+            "text-slate-900"
+          ],
+          "layout": {
+            "cell": {
+              "growFactor": 1,
+              "mainSize": "0",
+              "shrinkFactor": 1,
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "stretch",
+              "gap": "0",
+              "mainAxisAlignment": "flex-start",
+              "orientation": "column",
+              "type": "box"
+            }
+          },
+          "name": "div"
+        }
+      ],
+      "classList": [
+        "min-h-screen"
+      ],
+      "comments": "Built-in Box pairs the unstyled core Navigation with the content region. Core Navigation owns its header, toggle, responsive collapse, and visual appearance. Viewport minimum height does not depend on ancestor percentage heights.",
+      "layout": {
+        "container": {
+          "crossAxisAlignment": "stretch",
+          "gap": "0",
+          "mainAxisAlignment": "flex-start",
+          "orientation": "row",
+          "type": "box"
+        }
+      },
+      "name": "div",
+      "styles": [
+        {
+          "property": "height",
+          "value": "100%"
+        }
+      ]
+    }
+  ],
+  "description": "## Completed PetWorld workspace\nPersistent shell for the completed workspace.home, workspace.pets, workspace.pet-detail and workspace.countries children. The home page declares parentPageName workspace and renders at /app/home. Use the top-level workspace state as the app default entry: exact workspace arrivals redirect to workspace.home with $state.go('workspace.home', {}, { location: 'replace' }), replacing the parent entry in browser history.\n\nA dedicated lifecycle method installs an exact-parent success hook and one deferred initial check. Angular $timeout defers navigation until after the current transition/digest; registration, current-state and active-transition checks protect child deep links and concurrent navigation. A shared queued/in-flight guard deduplicates initialization and success-hook work. Rejections are handled without automatic retries or redirect loops; the existing overview link remains available. Hooks and pending timers are cleaned up after successful workspace exit. syncNavigation only computes menu state and never initiates transitions.\n\nCore Navigation, declarative links, child-pages outlet, responsive collapse, theme hooks, keyboard focus behavior, viewport minimum sizing and Petstore v2/Countries GraphQL references are preserved. Media-query and focus listeners are removed after successful workspace exit.",
+  "name": "workspace",
+  "params": {},
+  "type": "page",
+  "url": "/app",
+  "variables": [
+    {
+      "name": "$state",
+      "type": "service"
+    },
+    {
+      "name": "$transitions",
+      "type": "service"
+    },
+    {
+      "name": "$window",
+      "type": "service"
+    },
+    {
+      "name": "$rootScope",
+      "type": "service"
+    },
+    {
+      "name": "$timeout",
+      "type": "service"
+    },
+    {
+      "description": "Native Navigation collapse state; initialized from a small-screen media query and subsequently controlled by its built-in toggle.",
+      "name": "navCollapsed",
+      "type": "property",
+      "value": "false"
+    },
+    {
+      "description": "Declarative links to the completed workspace sections, with a defensive registration-time URL fallback.",
+      "name": "navItems",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "Shows the existing parent welcome fallback only while exact workspace is active, before its landing redirect completes or if it fails.",
+      "name": "isShellOnly",
+      "type": "property",
+      "value": "true"
+    },
+    {
+      "body": "const main = $ctrl.$window.document.getElementById('petworld-workspace-content');\nif (main) {\n  main.focus({ preventScroll: true });\n}",
+      "description": "Moves keyboard focus to the semantic main landmark without changing route or forcing scroll.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "focusContent",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const current = $ctrl.$state.current.name || '';\n$ctrl.isShellOnly = current === 'workspace';\nconst sections = [\n  { label: 'Overview', state: 'workspace.home', path: '#!/app/home' },\n  { label: 'Pet catalogue', state: 'workspace.pets', path: '#!/app/pets' },\n  { label: 'Countries', state: 'workspace.countries', path: '#!/app/countries' }\n];\n// Defensive URL fallback during route registration; all section children are implemented.\nconst links = sections.map((section) => {\n  const active = current === section.state || current.startsWith(section.state + '.') || (section.state === 'workspace.pets' && (current === 'workspace.pet-detail' || current.startsWith('workspace.pet-detail.')));\n  return {\n    label: section.label,\n    evaluateLabel: false,\n    onClick: 'link',\n    openIn: 'current-window',\n    link: $ctrl.$state.get(section.state) ? { type: 'state', state: section.state, parameters: {} } : { type: 'url', path: section.path, evaluate: false },\n    checkedWhen: active ? 'true' : 'false'\n  };\n});\n$ctrl.navItems = [{ label: 'WORKSPACE', evaluateLabel: false, menuItems: links }];",
+      "description": "Computes active-section checks, grouping pet-detail under Pet catalogue. Registration guards protect declarative menu links. No routing side effects occur in this watched method.",
+      "invokeOnLoad": true,
+      "isAsync": false,
+      "name": "syncNavigation",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": [
+        "$ctrl.$state.current.name"
+      ]
+    },
+    {
+      "body": "const media = $ctrl.$window.matchMedia('(max-width: 767px)');\nlet disposed = false;\n$ctrl.navCollapsed = media.matches;\nconst onResize = () => {\n  $ctrl.$rootScope.$evalAsync(() => {\n    if (!disposed) { $ctrl.navCollapsed = media.matches; }\n  });\n};\nif (media.addEventListener) {\n  media.addEventListener('change', onResize);\n} else {\n  media.addListener(onResize);\n}\nconst unsubscribe = $ctrl.$transitions.onSuccess({ to: 'workspace.**' }, () => {\n  $ctrl.$rootScope.$evalAsync(() => {\n    if (disposed) { return; }\n    $ctrl.syncNavigation();\n    if (media.matches) { $ctrl.navCollapsed = true; }\n    $ctrl.focusContent();\n  });\n});\n// A successful exit tears down this shell's external listeners.\nconst unsubscribeExit = $ctrl.$transitions.onSuccess({ from: 'workspace.**' }, (transition) => {\n  const destination = transition.to().name;\n  if (destination === 'workspace' || destination.startsWith('workspace.')) { return; }\n  disposed = true;\n  unsubscribe();\n  unsubscribeExit();\n  if (media.removeEventListener) {\n    media.removeEventListener('change', onResize);\n  } else {\n    media.removeListener(onResize);\n  }\n});",
+      "description": "Uses injected $rootScope for digest-safe responsive updates and successful transition hooks for focus and listener cleanup, without relying on $ctrl.$scope. Cleanup runs only after leaving the workspace successfully, so canceled transitions retain menu behavior.",
+      "invokeOnLoad": true,
+      "isAsync": false,
+      "name": "initializeShell",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "let disposed = false;\nlet queued = null;\nlet redirecting = false;\nconst scheduleRedirect = () => {\n  if (disposed || queued || redirecting) { return; }\n  // Defer beyond route setup and the parent success hook; never navigate from a digest watch.\n  queued = $ctrl.$timeout(() => {\n    queued = null;\n    if (disposed || redirecting || $ctrl.$state.current.name !== 'workspace') { return; }\n    // Do not supersede any initial or user-requested child transition. Its parent success hook can schedule again.\n    if ($ctrl.$state.transition || !$ctrl.$state.get('workspace.home')) { return; }\n    redirecting = true;\n    try {\n      const navigation = $ctrl.$state.go('workspace.home', {}, { location: 'replace' });\n      navigation.catch(error => {\n        // Superseded/aborted transitions are expected when the user navigates elsewhere.\n        if (!disposed && error && error.type !== 2 && error.type !== 3 && error.type !== 5) {\n          $ctrl.$window.console.error('PetWorld overview redirect failed.', error);\n        }\n      }).finally(() => {\n        redirecting = false;\n      });\n    } catch (error) {\n      redirecting = false;\n      $ctrl.$window.console.error('PetWorld overview redirect failed.', error);\n    }\n  }, 0);\n  // Cancellation on successful exit is intentional, not an unhandled rejection.\n  queued.catch(() => {});\n};\nconst unsubscribeParent = $ctrl.$transitions.onSuccess({ to: 'workspace' }, () => {\n  scheduleRedirect();\n});\nconst unsubscribeExit = $ctrl.$transitions.onSuccess({ from: 'workspace.**' }, transition => {\n  const destination = transition.to().name;\n  if (destination === 'workspace' || destination.startsWith('workspace.')) { return; }\n  disposed = true;\n  unsubscribeParent();\n  unsubscribeExit();\n  if (queued) {\n    $ctrl.$timeout.cancel(queued);\n    queued = null;\n  }\n});\n// Covers initialization after the initial success event; shares the same queue with onSuccess.\nscheduleRedirect();",
+      "description": "Lifecycle-only exact-parent redirect, independent of watched menu computation. One deferred check plus an exact workspace success hook share queued/in-flight guards. Rechecks state, route registration and active transition immediately before normal $state.go with location replace. Successful exits dispose hooks and cancel deferred work; redirect rejections are reported without retry loops.",
+      "invokeOnLoad": true,
+      "isAsync": false,
+      "name": "initializeLandingRedirect",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "children": [
+    {
+      "attributes": [
+        {
+          "property": "core",
+          "value": ""
+        }
+      ],
+      "children": [],
+      "classList": [],
+      "expressions": [],
+      "name": "Badge",
+      "nodeName": "bln-badge",
+      "ownerName": null,
+      "type": "core-component"
+    }
+  ],
+  "name": "cc",
+  "params": {},
+  "parentDirectoryId": "4vZPBdU8jswo2FKEqExP6",
+  "type": "page",
+  "url": "/cc",
+  "variables": []
+}

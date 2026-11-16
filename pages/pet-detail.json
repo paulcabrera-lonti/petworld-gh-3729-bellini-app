@@ -1,0 +1,993 @@
+{
+  "children": [
+    {
+      "attributes": [
+        {
+          "property": "aria-label",
+          "value": "Pet record details"
+        }
+      ],
+      "children": [
+        {
+          "attributes": [
+            {
+              "property": "core",
+              "value": ""
+            }
+          ],
+          "children": [],
+          "classList": [
+            "text-sm",
+            "font-medium",
+            "text-teal-800",
+            "[&_a]:underline",
+            "[&_a]:underline-offset-4",
+            "[&_a:focus-visible]:outline",
+            "[&_a:focus-visible]:outline-2",
+            "[&_a:focus-visible]:outline-offset-4",
+            "[&_a:focus-visible]:outline-teal-700"
+          ],
+          "comments": "Single inline breadcrumb/back link remains visible during loading, errors and 404s; not a duplicate navigation bar.",
+          "expressions": [
+            {
+              "expression": "'Pet catalogue'",
+              "to": "text"
+            },
+            {
+              "expression": "{type: 'state', state: 'workspace.pets', parameters: {}}",
+              "to": "link"
+            },
+            {
+              "expression": "'current_window'",
+              "to": "openIn"
+            },
+            {
+              "expression": "'Return to the Pet catalogue'",
+              "to": "tooltip"
+            }
+          ],
+          "layout": {
+            "cell": {
+              "crossAxisAlignment": "flex-start",
+              "type": "box-item"
+            }
+          },
+          "name": "Link",
+          "nodeName": "bln-link",
+          "type": "core-component"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "Pet details"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-2xl",
+                "sm:text-3xl",
+                "font-semibold",
+                "tracking-tight"
+              ],
+              "layout": {
+                "cell": {
+                  "growFactor": 1,
+                  "mainSize": "0",
+                  "shrinkFactor": 1,
+                  "type": "box-item"
+                }
+              },
+              "name": "h1"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "children": [],
+              "classList": [
+                "rounded-md",
+                "focus-within:ring-2",
+                "focus-within:ring-teal-700",
+                "focus-within:ring-offset-2"
+              ],
+              "expressions": [
+                {
+                  "expression": "'Refresh'",
+                  "to": "label"
+                },
+                {
+                  "expression": "'secondary'",
+                  "to": "type"
+                },
+                {
+                  "expression": "'Reload this record from the public demo service'",
+                  "to": "tooltip"
+                },
+                {
+                  "expression": "!$ctrl.canRetry",
+                  "to": "isDisabled"
+                },
+                {
+                  "expression": "$ctrl.loading",
+                  "to": "showLoading"
+                },
+                {
+                  "expression": "$ctrl.refresh()",
+                  "to": "onClick"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "growFactor": 0,
+                  "shrinkFactor": 0,
+                  "type": "box-item"
+                }
+              },
+              "name": "Button",
+              "nodeName": "bln-button",
+              "type": "core-component"
+            }
+          ],
+          "classList": [],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "center",
+              "gap": "16px",
+              "mainAxisAlignment": "space-between",
+              "orientation": "row",
+              "type": "box"
+            }
+          },
+          "name": "div"
+        },
+        {
+          "children": [],
+          "classList": [],
+          "displayExpression": "$ctrl.loading",
+          "expressions": [
+            {
+              "expression": "'loading'",
+              "to": "kind"
+            },
+            {
+              "expression": "'Loading pet details'",
+              "to": "title"
+            },
+            {
+              "expression": "'Retrieving this record from the public Petstore demo.'",
+              "to": "message"
+            }
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "pw-feedback",
+          "ownerId": "6afa9b10de45780c01651671",
+          "ownerType": "app",
+          "resourceIdentity": "components/pw-feedback",
+          "type": "custom-component"
+        },
+        {
+          "children": [],
+          "classList": [],
+          "displayExpression": "!$ctrl.loading && $ctrl.error && !$ctrl.notFound",
+          "expressions": [
+            {
+              "expression": "'error'",
+              "to": "kind"
+            },
+            {
+              "expression": "'Unable to load pet details'",
+              "to": "title"
+            },
+            {
+              "expression": "$ctrl.error",
+              "to": "message"
+            },
+            {
+              "expression": "'Retry'",
+              "to": "retryLabel"
+            },
+            {
+              "expression": "$ctrl.refresh()",
+              "to": "onRetry"
+            }
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "pw-feedback",
+          "ownerId": "6afa9b10de45780c01651671",
+          "ownerType": "app",
+          "resourceIdentity": "components/pw-feedback",
+          "type": "custom-component"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "classList": [
+                "w-full"
+              ],
+              "expressions": [
+                {
+                  "expression": "'empty'",
+                  "to": "kind"
+                },
+                {
+                  "expression": "'No matching pet'",
+                  "to": "title"
+                },
+                {
+                  "expression": "$ctrl.notFoundMessage",
+                  "to": "message"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "pw-feedback",
+              "ownerId": "6afa9b10de45780c01651671",
+              "ownerType": "app",
+              "resourceIdentity": "components/pw-feedback",
+              "type": "custom-component"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "children": [],
+              "classList": [
+                "rounded-md",
+                "focus-within:ring-2",
+                "focus-within:ring-teal-700",
+                "focus-within:ring-offset-2"
+              ],
+              "displayExpression": "$ctrl.canRetry",
+              "expressions": [
+                {
+                  "expression": "'Retry this ID'",
+                  "to": "label"
+                },
+                {
+                  "expression": "'secondary'",
+                  "to": "type"
+                },
+                {
+                  "expression": "'Check whether this demo record is now present'",
+                  "to": "tooltip"
+                },
+                {
+                  "expression": "$ctrl.refresh()",
+                  "to": "onClick"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "Button",
+              "nodeName": "bln-button",
+              "type": "core-component"
+            }
+          ],
+          "classList": [],
+          "comments": "Empty/no-match presentation is deliberately distinct from a connection error. pw-feedback only offers retry in error mode, so the 404 retry is a separate verified core Button.",
+          "displayExpression": "!$ctrl.loading && $ctrl.notFound",
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "center",
+              "gap": "16px",
+              "mainAxisAlignment": "flex-start",
+              "orientation": "column",
+              "type": "box"
+            }
+          },
+          "name": "div"
+        },
+        {
+          "children": [
+            {
+              "attributes": [
+                {
+                  "property": "aria-hidden",
+                  "value": "true"
+                }
+              ],
+              "children": [
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "text-8xl",
+                    "[&_i]:text-8xl",
+                    "[&_svg]:text-8xl",
+                    "[&_i]:text-teal-700",
+                    "[&_svg]:text-teal-700"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "''",
+                      "to": "text"
+                    },
+                    {
+                      "expression": "'outline'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "'default'",
+                      "to": "colorScheme"
+                    },
+                    {
+                      "expression": "{type: 'font-icon', style: 'solid', name: 'paw', position: 'left'}",
+                      "to": "icon"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Badge",
+                  "nodeName": "bln-badge",
+                  "type": "core-component"
+                }
+              ],
+              "classList": [
+                "min-h-64",
+                "bg-teal-50",
+                "text-teal-700",
+                "p-10"
+              ],
+              "comments": "Decorative paw through the verified core Badge icon renderer; no asset dependency.",
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "center",
+                  "gap": "0",
+                  "mainAxisAlignment": "center",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "div"
+            },
+            {
+              "children": [
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [],
+                  "expressions": [
+                    {
+                      "expression": "$ctrl.pet.status",
+                      "to": "text"
+                    },
+                    {
+                      "expression": "'solid'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "$ctrl.statusColor",
+                      "to": "colorScheme"
+                    },
+                    {
+                      "expression": "'Reported API status; not verified adoption availability'",
+                      "to": "tooltip"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "crossAxisAlignment": "flex-start",
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Badge",
+                  "nodeName": "bln-badge",
+                  "type": "core-component"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": true,
+                      "name": "text",
+                      "textContent": "$ctrl.pet.name"
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-3xl",
+                    "sm:text-4xl",
+                    "font-semibold",
+                    "tracking-tight",
+                    "break-words",
+                    "[overflow-wrap:anywhere]"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "h2"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "Category"
+                        }
+                      ],
+                      "classList": [
+                        "text-xs",
+                        "font-medium",
+                        "uppercase",
+                        "tracking-wider",
+                        "text-slate-500"
+                      ],
+                      "name": "dt"
+                    },
+                    {
+                      "children": [
+                        {
+                          "evaluate": true,
+                          "name": "text",
+                          "textContent": "$ctrl.pet.category"
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "mt-2",
+                        "text-lg",
+                        "text-slate-700",
+                        "break-words",
+                        "[overflow-wrap:anywhere]"
+                      ],
+                      "name": "dd"
+                    },
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "Record ID"
+                        }
+                      ],
+                      "classList": [
+                        "mt-6",
+                        "text-xs",
+                        "font-medium",
+                        "uppercase",
+                        "tracking-wider",
+                        "text-slate-500"
+                      ],
+                      "name": "dt"
+                    },
+                    {
+                      "children": [
+                        {
+                          "evaluate": true,
+                          "name": "text",
+                          "textContent": "$ctrl.pet.id"
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "mt-2",
+                        "font-mono",
+                        "text-sm",
+                        "text-slate-700",
+                        "break-all"
+                      ],
+                      "name": "dd"
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "min-w-0"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "dl"
+                },
+                {
+                  "attributes": [
+                    {
+                      "property": "aria-label",
+                      "value": "Record tags"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "Tags"
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "text-sm",
+                        "font-medium",
+                        "text-slate-700"
+                      ],
+                      "layout": {
+                        "cell": {
+                          "type": "box-item"
+                        }
+                      },
+                      "name": "h3"
+                    },
+                    {
+                      "attributes": [
+                        {
+                          "property": "core",
+                          "value": ""
+                        }
+                      ],
+                      "children": [],
+                      "classList": [
+                        "max-w-full",
+                        "whitespace-normal",
+                        "break-words",
+                        "[overflow-wrap:anywhere]"
+                      ],
+                      "expressions": [
+                        {
+                          "expression": "tag",
+                          "to": "text"
+                        },
+                        {
+                          "expression": "'outline'",
+                          "to": "type"
+                        },
+                        {
+                          "expression": "'default'",
+                          "to": "colorScheme"
+                        }
+                      ],
+                      "iterate": {
+                        "array": "$ctrl.pet.tags",
+                        "trackByIndex": true,
+                        "variable": "tag"
+                      },
+                      "layout": {
+                        "cell": {
+                          "type": "box-item"
+                        }
+                      },
+                      "name": "Badge",
+                      "nodeName": "bln-badge",
+                      "type": "core-component"
+                    },
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "No tags supplied for this record."
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "text-sm",
+                        "text-slate-500"
+                      ],
+                      "displayExpression": "!$ctrl.pet.tags.length",
+                      "layout": {
+                        "cell": {
+                          "type": "box-item"
+                        }
+                      },
+                      "name": "p"
+                    }
+                  ],
+                  "classList": [
+                    "pt-5",
+                    "border-t",
+                    "border-slate-100"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    },
+                    "container": {
+                      "crossAxisAlignment": "flex-start",
+                      "gap": "8px",
+                      "mainAxisAlignment": "flex-start",
+                      "orientation": "column",
+                      "type": "box"
+                    }
+                  },
+                  "name": "section"
+                }
+              ],
+              "classList": [
+                "min-w-0",
+                "p-6",
+                "sm:p-10"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "stretch",
+                  "gap": "20px",
+                  "mainAxisAlignment": "center",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "div"
+            }
+          ],
+          "classList": [
+            "min-w-0",
+            "overflow-hidden",
+            "rounded-xl",
+            "border",
+            "border-slate-200",
+            "bg-white",
+            "shadow-sm"
+          ],
+          "comments": "Auto-fitting built-in Grid gives a spacious two-column icon/content card, stacking naturally when either column would be narrower than 18rem. No remote image or inferred pet attributes.",
+          "displayExpression": "!$ctrl.loading && !$ctrl.error && !$ctrl.notFound && $ctrl.pet",
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "columnAxisAlignment": "stretch",
+              "columnGap": "0",
+              "columns": [
+                {
+                  "type": "other",
+                  "value": "repeat(auto-fit, minmax(min(100%, 18rem), 1fr))"
+                }
+              ],
+              "rowAxisAlignment": "stretch",
+              "rowGap": "0",
+              "rows": [
+                {
+                  "type": "other",
+                  "value": "auto"
+                }
+              ],
+              "type": "grid"
+            }
+          },
+          "name": "article"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "About this record"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-lg",
+                "font-semibold",
+                "tracking-tight"
+              ],
+              "name": "h2"
+            },
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "This record comes from Swagger Petstore, a public demo used to explore API data. Shared sample records can change or disappear. The status is a value reported by the demo, not confirmation of adoption availability."
+                }
+              ],
+              "classList": [
+                "m-0",
+                "mt-3",
+                "max-w-prose",
+                "text-sm",
+                "leading-7",
+                "text-slate-600"
+              ],
+              "name": "p"
+            },
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "Only the record name, category, ID, status and supplied tags are shown. Price, age, breed, location and real-world availability are not verified or inferred here."
+                }
+              ],
+              "classList": [
+                "m-0",
+                "mt-3",
+                "max-w-prose",
+                "text-sm",
+                "leading-7",
+                "text-slate-600"
+              ],
+              "name": "p"
+            }
+          ],
+          "classList": [
+            "rounded-xl",
+            "border",
+            "border-slate-200",
+            "bg-white",
+            "p-6",
+            "sm:p-8"
+          ],
+          "comments": "Record context remains visible in all states; never claims real-world availability or invents missing fields.",
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "aside"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "Record source"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-sm",
+                "font-medium",
+                "text-slate-800"
+              ],
+              "name": "h2"
+            },
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "API provider: Swagger Petstore v2 · Public demo"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "mt-2",
+                "text-sm",
+                "leading-6",
+                "text-slate-600"
+              ],
+              "name": "p"
+            },
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "Read-only data. Refresh retrieves the current demo record; this page does not create or modify pets."
+                }
+              ],
+              "classList": [
+                "m-0",
+                "mt-1",
+                "text-xs",
+                "leading-5",
+                "text-slate-500"
+              ],
+              "name": "p"
+            }
+          ],
+          "classList": [
+            "rounded-lg",
+            "border",
+            "border-slate-200",
+            "bg-slate-50",
+            "p-5"
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "section"
+        }
+      ],
+      "classList": [
+        "w-full",
+        "min-w-0",
+        "text-slate-900"
+      ],
+      "layout": {
+        "container": {
+          "crossAxisAlignment": "stretch",
+          "gap": "24px",
+          "mainAxisAlignment": "flex-start",
+          "orientation": "column",
+          "type": "box"
+        }
+      },
+      "name": "section"
+    }
+  ],
+  "name": "pet-detail",
+  "params": {
+    "id": ""
+  },
+  "parentPageName": "workspace",
+  "type": "page",
+  "url": "/pets/:id",
+  "variables": [
+    {
+      "id": "service",
+      "name": "petData",
+      "resourceIdentity": "services/pet-data",
+      "type": "service"
+    },
+    {
+      "name": "$state",
+      "type": "service"
+    },
+    {
+      "name": "$q",
+      "type": "service"
+    },
+    {
+      "description": "Local request flag; only the current request token may clear it.",
+      "name": "loading",
+      "type": "property",
+      "value": "true"
+    },
+    {
+      "description": "Safe service error message for non-404 failures, rendered as plain text.",
+      "name": "error",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "True for invalid/missing IDs, absent records, or confirmed 404 responses.",
+      "name": "notFound",
+      "type": "property",
+      "value": "false"
+    },
+    {
+      "description": "Read-only normalized detail; only id, name, category, status and tags are consumed.",
+      "name": "pet",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Monotonic request token preventing stale result and finalizer writes.",
+      "name": "sequence",
+      "type": "property",
+      "value": "0"
+    },
+    {
+      "description": "Last observed string ID; suppresses duplicate initial watch loads.",
+      "name": "lastRouteId",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Only valid integer-string route IDs can be retried or refreshed.",
+      "name": "canRetry",
+      "type": "property",
+      "value": "false"
+    },
+    {
+      "description": "Distinct guidance for invalid links versus confirmed missing demo records.",
+      "name": "notFoundMessage",
+      "type": "property",
+      "value": "''"
+    },
+    {
+      "description": "Semantic styling of reported API status; not an availability guarantee.",
+      "name": "statusColor",
+      "type": "property",
+      "value": "'default'"
+    },
+    {
+      "body": "const params = $ctrl.$state.params || {};\nconst raw = params.id !== undefined && params.id !== null ? params.id : ($ctrl.pageParameters && $ctrl.pageParameters.id);\nreturn raw === undefined || raw === null ? '' : String(raw);",
+      "description": "Reads the live UI-Router ID without numeric conversion. Bellini pageParameters provides the initial fallback.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "routeId",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const id = $ctrl.routeId();\nif ($ctrl.lastRouteId === id) { return; }\n$ctrl.lastRouteId = id;\nreturn $ctrl.loadPet(false);",
+      "description": "Loads direct links and changed route parameters, avoiding duplicate init/watch work.",
+      "invokeOnLoad": true,
+      "isAsync": false,
+      "name": "syncRoute",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": [
+        "$ctrl.$state.params.id",
+        "$ctrl.pageParameters.id"
+      ]
+    },
+    {
+      "body": "const id = $ctrl.routeId();\nconst token = ++$ctrl.sequence;\n$ctrl.loading = true;\n$ctrl.error = null;\n$ctrl.notFound = false;\n$ctrl.pet = null;\n$ctrl.notFoundMessage = '';\n$ctrl.canRetry = /^-?\\d+$/.test(id) && id.length <= 100;\nif (!$ctrl.canRetry) {\n  $ctrl.loading = false;\n  $ctrl.notFound = true;\n  $ctrl.notFoundMessage = 'No matching pet: this link has a missing or invalid pet ID. Return to the Pet catalogue and choose a record.';\n  return;\n}\n// Capture the exact string ID; never use Number or parseInt for int64 routes.\nconst isCurrent = () => token === $ctrl.sequence && $ctrl.routeId() === id && $ctrl.$state.current.name === 'workspace.pet-detail';\nreturn $ctrl.$q.when().then(() => $ctrl.petData.getPet(id, !!force)).then(record => {\n  if (!isCurrent()) { return; }\n  if (!record) {\n    $ctrl.notFound = true;\n    $ctrl.notFoundMessage = 'No matching pet was returned for this ID. The public demo record may have changed or been removed. Retry or return to the Pet catalogue.';\n    return;\n  }\n  // Consume only the service contract's normalized fields; never mutate the service record.\n  $ctrl.pet = { id: record.id, name: record.name, category: record.category, status: record.status, tags: Array.isArray(record.tags) ? record.tags.slice() : [] };\n  const colors = { available: 'green', pending: 'yellow', sold: 'default' };\n  $ctrl.statusColor = colors[record.status] || 'default';\n}).catch(err => {\n  if (!isCurrent()) { return; }\n  if (err && (err.code === 'PET_NOT_FOUND' || err.status === 404)) {\n    $ctrl.notFound = true;\n    $ctrl.notFoundMessage = 'No matching pet (404). This ID was not found in the public Petstore demo. The record may have been removed or changed. Retry this ID or return to the Pet catalogue.';\n  } else {\n    $ctrl.error = (err && err.message) || 'We could not load this pet record. Please try again.';\n  }\n}).finally(() => {\n  if (isCurrent()) { $ctrl.loading = false; }\n});",
+      "description": "Loads only through petData. Every response, error and finalizer checks both sequence and current route. $q keeps updates digest-safe, including synchronous service exceptions.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "loadPet",
+      "parameters": [
+        "force"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "if ($ctrl.loading || !$ctrl.canRetry) { return; }\nreturn $ctrl.loadPet(true);",
+      "description": "Force-refreshes the current valid route without clearing list caches.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "refresh",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    }
+  ]
+}

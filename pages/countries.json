@@ -1,0 +1,1341 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "WORLD EXPLORER"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "mb-3",
+                "text-xs",
+                "font-semibold",
+                "tracking-widest",
+                "text-teal-700"
+              ],
+              "name": "p"
+            },
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "A world worth discovering."
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-3xl",
+                "md:text-4xl",
+                "font-semibold",
+                "tracking-tight"
+              ],
+              "name": "h1"
+            },
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "Explore real geography from the Countries GraphQL API: names, capitals, continents, and languages. A directory for discovery—not travel or adoption eligibility advice."
+                }
+              ],
+              "classList": [
+                "m-0",
+                "mt-4",
+                "max-w-2xl",
+                "text-sm",
+                "leading-6",
+                "text-slate-600"
+              ],
+              "name": "p"
+            }
+          ],
+          "classList": [
+            "py-2"
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "header"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "classList": [],
+              "expressions": [
+                {
+                  "expression": "'Countries'",
+                  "to": "label"
+                },
+                {
+                  "expression": "$ctrl.metrics.countries",
+                  "to": "value"
+                },
+                {
+                  "expression": "'Records in the directory'",
+                  "to": "hint"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                }
+              },
+              "name": "pw-stat-card",
+              "ownerId": "6afa9b10de45780c01651671",
+              "ownerType": "app",
+              "resourceIdentity": "components/pw-stat-card",
+              "type": "custom-component"
+            },
+            {
+              "children": [],
+              "classList": [],
+              "expressions": [
+                {
+                  "expression": "'Continents'",
+                  "to": "label"
+                },
+                {
+                  "expression": "$ctrl.metrics.continents",
+                  "to": "value"
+                },
+                {
+                  "expression": "'Distinct continent codes'",
+                  "to": "hint"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                }
+              },
+              "name": "pw-stat-card",
+              "ownerId": "6afa9b10de45780c01651671",
+              "ownerType": "app",
+              "resourceIdentity": "components/pw-stat-card",
+              "type": "custom-component"
+            },
+            {
+              "children": [],
+              "classList": [],
+              "expressions": [
+                {
+                  "expression": "'Languages'",
+                  "to": "label"
+                },
+                {
+                  "expression": "$ctrl.metrics.languages",
+                  "to": "value"
+                },
+                {
+                  "expression": "'Distinct language names'",
+                  "to": "hint"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                }
+              },
+              "name": "pw-stat-card",
+              "ownerId": "6afa9b10de45780c01651671",
+              "ownerType": "app",
+              "resourceIdentity": "components/pw-stat-card",
+              "type": "custom-component"
+            }
+          ],
+          "classList": [
+            "[--metric-columns:1]",
+            "sm:[--metric-columns:3]"
+          ],
+          "comments": "Full cached-directory metrics, unaffected by local filters. Language count uses unique normalized language names because the service does not expose language codes.",
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "columnAxisAlignment": "stretch",
+              "columnGap": "16px",
+              "columns": [
+                {
+                  "type": "other",
+                  "value": "repeat(var(--metric-columns, 1), minmax(0, 1fr))"
+                }
+              ],
+              "rowAxisAlignment": "stretch",
+              "rowGap": "16px",
+              "rows": [
+                {
+                  "type": "other",
+                  "value": "auto"
+                }
+              ],
+              "type": "grid"
+            }
+          },
+          "name": "div"
+        },
+        {
+          "attributes": [
+            {
+              "property": "aria-label",
+              "value": "Filter countries"
+            }
+          ],
+          "children": [
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "children": [],
+              "classList": [],
+              "comments": "Core debounce delays the explicit newValue/event callback by 250 ms; filter updates do not depend on watch metadata.",
+              "expressions": [
+                {
+                  "expression": "'Search countries'",
+                  "to": "label"
+                },
+                {
+                  "expression": "'search'",
+                  "to": "type"
+                },
+                {
+                  "expression": "$ctrl.searchQuery",
+                  "to": "value"
+                },
+                {
+                  "expression": "'top'",
+                  "to": "labelPosition"
+                },
+                {
+                  "expression": "'Name, native name, code, capital'",
+                  "to": "placeholder"
+                },
+                {
+                  "expression": "'Search name, native name, ISO code, or capital'",
+                  "to": "tooltip"
+                },
+                {
+                  "expression": "250",
+                  "to": "debounceDelay"
+                },
+                {
+                  "expression": "$ctrl.onSearchChanged(newValue, event)",
+                  "to": "onValueChange"
+                }
+              ],
+              "formControl": {
+                "modelName": "value"
+              },
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                }
+              },
+              "name": "Text Input",
+              "nodeName": "bln-text-input",
+              "type": "core-component"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "children": [],
+              "classList": [],
+              "expressions": [
+                {
+                  "expression": "'Continent'",
+                  "to": "label"
+                },
+                {
+                  "expression": "$ctrl.continent",
+                  "to": "value"
+                },
+                {
+                  "expression": "$ctrl.continentOptions",
+                  "to": "values"
+                },
+                {
+                  "expression": "false",
+                  "to": "allowOtherValues"
+                },
+                {
+                  "expression": "'top'",
+                  "to": "labelPosition"
+                },
+                {
+                  "expression": "$ctrl.onContinentChanged(value, event)",
+                  "to": "onValueChange"
+                }
+              ],
+              "formControl": {
+                "modelName": "value"
+              },
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                }
+              },
+              "name": "Dropdown",
+              "nodeName": "bln-dropdown",
+              "type": "core-component"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "children": [],
+              "classList": [],
+              "expressions": [
+                {
+                  "expression": "'Sort by name'",
+                  "to": "label"
+                },
+                {
+                  "expression": "$ctrl.sortOrder",
+                  "to": "value"
+                },
+                {
+                  "expression": "[{label: 'A–Z', value: 'asc'}, {label: 'Z–A', value: 'desc'}]",
+                  "to": "values"
+                },
+                {
+                  "expression": "false",
+                  "to": "allowOtherValues"
+                },
+                {
+                  "expression": "'top'",
+                  "to": "labelPosition"
+                },
+                {
+                  "expression": "$ctrl.onSortOrderChanged(value, event)",
+                  "to": "onValueChange"
+                }
+              ],
+              "formControl": {
+                "modelName": "value"
+              },
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                }
+              },
+              "name": "Dropdown",
+              "nodeName": "bln-dropdown",
+              "type": "core-component"
+            },
+            {
+              "children": [
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [],
+                  "expressions": [
+                    {
+                      "expression": "'Refresh data'",
+                      "to": "label"
+                    },
+                    {
+                      "expression": "'primary'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "$ctrl.loading || $ctrl.countryData.loading",
+                      "to": "isDisabled"
+                    },
+                    {
+                      "expression": "$ctrl.loadCountries(true)",
+                      "to": "onClick"
+                    },
+                    {
+                      "expression": "'Fetch fresh geography through the shared country cache'",
+                      "to": "tooltip"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Button",
+                  "nodeName": "bln-button",
+                  "type": "core-component"
+                },
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [],
+                  "expressions": [
+                    {
+                      "expression": "'Reset filters'",
+                      "to": "label"
+                    },
+                    {
+                      "expression": "'secondary'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "$ctrl.resetFilters()",
+                      "to": "onClick"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Button",
+                  "nodeName": "bln-button",
+                  "type": "core-component"
+                }
+              ],
+              "classList": [],
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "stretch",
+                  "gap": "8px",
+                  "mainAxisAlignment": "flex-start",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "div"
+            }
+          ],
+          "classList": [
+            "rounded-xl",
+            "border",
+            "border-slate-200",
+            "bg-white",
+            "p-5"
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "columnAxisAlignment": "stretch",
+              "columnGap": "16px",
+              "columns": [
+                {
+                  "type": "other",
+                  "value": "repeat(auto-fit, minmax(min(100%, 200px), 1fr))"
+                }
+              ],
+              "rowAxisAlignment": "end",
+              "rowGap": "16px",
+              "rows": [
+                {
+                  "type": "other",
+                  "value": "auto"
+                }
+              ],
+              "type": "grid"
+            }
+          },
+          "name": "section"
+        },
+        {
+          "children": [],
+          "classList": [],
+          "displayExpression": "$ctrl.loading || $ctrl.countryData.loading",
+          "expressions": [
+            {
+              "expression": "'loading'",
+              "to": "kind"
+            },
+            {
+              "expression": "'Discovering the world'",
+              "to": "title"
+            },
+            {
+              "expression": "'Loading geography. Previously loaded countries remain available below.'",
+              "to": "message"
+            }
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "pw-feedback",
+          "ownerId": "6afa9b10de45780c01651671",
+          "ownerType": "app",
+          "resourceIdentity": "components/pw-feedback",
+          "type": "custom-component"
+        },
+        {
+          "children": [],
+          "classList": [],
+          "displayExpression": "!$ctrl.loading && !$ctrl.countryData.loading && $ctrl.loadError",
+          "expressions": [
+            {
+              "expression": "'error'",
+              "to": "kind"
+            },
+            {
+              "expression": "'Country data could not be refreshed'",
+              "to": "title"
+            },
+            {
+              "expression": "$ctrl.loadError",
+              "to": "message"
+            },
+            {
+              "expression": "'Retry'",
+              "to": "retryLabel"
+            },
+            {
+              "expression": "$ctrl.loadCountries(true)",
+              "to": "onRetry"
+            }
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "pw-feedback",
+          "ownerId": "6afa9b10de45780c01651671",
+          "ownerType": "app",
+          "resourceIdentity": "components/pw-feedback",
+          "type": "custom-component"
+        },
+        {
+          "attributes": [
+            {
+              "property": "aria-labelledby",
+              "value": "pw-country-detail-heading"
+            }
+          ],
+          "children": [
+            {
+              "attributes": [
+                {
+                  "property": "aria-hidden",
+                  "value": "true"
+                }
+              ],
+              "children": [
+                {
+                  "evaluate": true,
+                  "name": "text",
+                  "textContent": "$ctrl.selectedCountry.emoji || '—'"
+                }
+              ],
+              "classList": [
+                "text-4xl"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "span"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "tabindex",
+                  "value": "-1"
+                }
+              ],
+              "children": [
+                {
+                  "evaluate": true,
+                  "name": "text",
+                  "textContent": "$ctrl.selectedCountry.name + ' — country details'"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-2xl",
+                "font-semibold",
+                "break-words",
+                "focus:outline-teal-600"
+              ],
+              "elementId": "pw-country-detail-heading",
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "h2"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "evaluate": true,
+                          "name": "text",
+                          "textContent": "field.label"
+                        }
+                      ],
+                      "classList": [
+                        "text-xs",
+                        "font-medium",
+                        "text-slate-500"
+                      ],
+                      "name": "dt"
+                    },
+                    {
+                      "children": [
+                        {
+                          "evaluate": true,
+                          "name": "text",
+                          "textContent": "field.value"
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "mt-1",
+                        "text-sm",
+                        "break-words",
+                        "text-slate-800"
+                      ],
+                      "name": "dd"
+                    }
+                  ],
+                  "classList": [],
+                  "iterate": {
+                    "array": "$ctrl.detailFields",
+                    "variable": "field"
+                  },
+                  "layout": {
+                    "cell": {
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "div"
+                }
+              ],
+              "classList": [
+                "m-0"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                },
+                "container": {
+                  "columnAxisAlignment": "stretch",
+                  "columnGap": "24px",
+                  "columns": [
+                    {
+                      "type": "other",
+                      "value": "repeat(auto-fit, minmax(min(100%, 200px), 1fr))"
+                    }
+                  ],
+                  "rowAxisAlignment": "start",
+                  "rowGap": "20px",
+                  "rows": [
+                    {
+                      "type": "other",
+                      "value": "auto"
+                    }
+                  ],
+                  "type": "grid"
+                }
+              },
+              "name": "dl"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "children": [],
+              "classList": [],
+              "expressions": [
+                {
+                  "expression": "'Close details'",
+                  "to": "label"
+                },
+                {
+                  "expression": "'secondary'",
+                  "to": "type"
+                },
+                {
+                  "expression": "$ctrl.closeDetails()",
+                  "to": "onClick"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "crossAxisAlignment": "flex-start",
+                  "type": "box-item"
+                }
+              },
+              "name": "Button",
+              "nodeName": "bln-button",
+              "type": "core-component"
+            }
+          ],
+          "classList": [
+            "rounded-xl",
+            "border",
+            "border-teal-200",
+            "bg-white",
+            "p-6"
+          ],
+          "comments": "Regular inline detail region before the grid; no dialog role or focus trap. Heading is focused after Angular mounts it.",
+          "displayExpression": "$ctrl.selectedCountry",
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "stretch",
+              "gap": "16px",
+              "mainAxisAlignment": "flex-start",
+              "orientation": "column",
+              "type": "box"
+            }
+          },
+          "name": "section"
+        },
+        {
+          "attributes": [
+            {
+              "property": "aria-labelledby",
+              "value": "pw-countries-results"
+            }
+          ],
+          "children": [
+            {
+              "attributes": [
+                {
+                  "property": "tabindex",
+                  "value": "-1"
+                }
+              ],
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "Explore the directory"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-lg",
+                "font-semibold",
+                "focus:outline-teal-600"
+              ],
+              "elementId": "pw-countries-results",
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "h2"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "role",
+                  "value": "status"
+                },
+                {
+                  "property": "aria-live",
+                  "value": "polite"
+                },
+                {
+                  "property": "aria-atomic",
+                  "value": "true"
+                }
+              ],
+              "children": [
+                {
+                  "evaluate": true,
+                  "name": "text",
+                  "textContent": "$ctrl.resultSummary"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-sm",
+                "text-slate-500",
+                "tabular-nums"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "p"
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "classList": [],
+                  "comments": "country is the callback local emitted by onSelect({country}), not the iterate variable item.",
+                  "expressions": [
+                    {
+                      "expression": "item",
+                      "to": "country"
+                    },
+                    {
+                      "expression": "$ctrl.selectCountry(country)",
+                      "to": "onSelect"
+                    }
+                  ],
+                  "iterate": {
+                    "array": "$ctrl.pageCountries",
+                    "variable": "item"
+                  },
+                  "layout": {
+                    "cell": {
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "pw-country-card",
+                  "ownerId": "6afa9b10de45780c01651671",
+                  "ownerType": "app",
+                  "resourceIdentity": "components/pw-country-card",
+                  "type": "custom-component"
+                }
+              ],
+              "classList": [
+                "[--country-columns:1]",
+                "md:[--country-columns:2]",
+                "lg:[--country-columns:3]"
+              ],
+              "comments": "Built-in Grid owns structure. Responsive custom-property track count is 1 mobile, 2 tablet (768px), 3 desktop (1024px); each repeated card is a matching grid-item.",
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                },
+                "container": {
+                  "columnAxisAlignment": "stretch",
+                  "columnGap": "16px",
+                  "columns": [
+                    {
+                      "type": "other",
+                      "value": "repeat(var(--country-columns, 1), minmax(0, 1fr))"
+                    }
+                  ],
+                  "rowAxisAlignment": "stretch",
+                  "rowGap": "16px",
+                  "rows": [
+                    {
+                      "type": "other",
+                      "value": "auto"
+                    }
+                  ],
+                  "type": "grid"
+                }
+              },
+              "name": "div"
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "classList": [],
+                  "expressions": [
+                    {
+                      "expression": "'empty'",
+                      "to": "kind"
+                    },
+                    {
+                      "expression": "'No countries match'",
+                      "to": "title"
+                    },
+                    {
+                      "expression": "'Try a different name or continent, or reset your filters to explore the full directory.'",
+                      "to": "message"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "pw-feedback",
+                  "ownerId": "6afa9b10de45780c01651671",
+                  "ownerType": "app",
+                  "resourceIdentity": "components/pw-feedback",
+                  "type": "custom-component"
+                },
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [],
+                  "expressions": [
+                    {
+                      "expression": "'Reset filters'",
+                      "to": "label"
+                    },
+                    {
+                      "expression": "'secondary'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "$ctrl.resetFilters()",
+                      "to": "onClick"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "crossAxisAlignment": "center",
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Button",
+                  "nodeName": "bln-button",
+                  "type": "core-component"
+                }
+              ],
+              "classList": [],
+              "displayExpression": "!$ctrl.loading && !$ctrl.countryData.loading && !$ctrl.loadError && !$ctrl.filteredCountries.length && $ctrl.countryData.lastUpdated != null",
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "stretch",
+                  "gap": "12px",
+                  "mainAxisAlignment": "flex-start",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "div"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "children": [],
+              "classList": [],
+              "displayExpression": "$ctrl.filteredCountries.length > 0",
+              "expressions": [
+                {
+                  "expression": "$ctrl.currentPage",
+                  "to": "currentPage"
+                },
+                {
+                  "expression": "$ctrl.totalPages",
+                  "to": "totalPages"
+                },
+                {
+                  "expression": "'currentPageAndTotalPages'",
+                  "to": "display"
+                },
+                {
+                  "expression": "true",
+                  "to": "showFirstPageButton"
+                },
+                {
+                  "expression": "true",
+                  "to": "showLastPageButton"
+                },
+                {
+                  "expression": "$ctrl.changePage(currentPage)",
+                  "to": "onPageChange"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "Pagination",
+              "nodeName": "bln-pagination",
+              "type": "core-component"
+            }
+          ],
+          "classList": [],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "stretch",
+              "gap": "16px",
+              "mainAxisAlignment": "flex-start",
+              "orientation": "column",
+              "type": "box"
+            }
+          },
+          "name": "section"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "Source: Countries GraphQL API · countries.trevorblades.com · Geographic reference only."
+                }
+              ],
+              "classList": [
+                "m-0",
+                "break-words"
+              ],
+              "name": "p"
+            },
+            {
+              "children": [
+                {
+                  "evaluate": true,
+                  "name": "text",
+                  "textContent": "'Last updated: ' + ($ctrl.countryData.lastUpdated | date:'medium')"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "mt-1"
+              ],
+              "displayExpression": "$ctrl.countryData.lastUpdated != null",
+              "name": "p"
+            }
+          ],
+          "classList": [
+            "border-t",
+            "border-slate-200",
+            "pt-4",
+            "text-xs",
+            "leading-5",
+            "text-slate-500"
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "footer"
+        }
+      ],
+      "classList": [
+        "min-w-0",
+        "text-slate-900"
+      ],
+      "layout": {
+        "container": {
+          "crossAxisAlignment": "stretch",
+          "gap": "24px",
+          "mainAxisAlignment": "flex-start",
+          "orientation": "column",
+          "type": "box"
+        }
+      },
+      "name": "div"
+    }
+  ],
+  "description": "## Countries directory\n- **Routing:** `workspace.countries` at `/app/countries`, inside the persistent workspace shell; no URL parameters.\n- **Service cache:** `countryData` owns Countries GraphQL transport, a ten-minute cache and shared pending requests. Refresh/Retry forces a load; failures retain cached results. Successful loads explicitly call `syncData` for metrics, continent options and filtering.\n- **Filters:** verified core `onValueChange` callbacks assign search (250 ms core debounce), continent and name sort before applying local filters and resetting page one; no filter watcher is required. Shared records are never mutated.\n- **Pagination:** twelve results per page, clamped after refresh, with an accessible result range.\n- **Inline details and focus:** `pw-country-card` emits the named `country` local, passed directly to `selectCountry(country)`. Opening details focuses their heading; closing restores the initiating button or falls back to the results heading. No dialog or route change.",
+  "name": "countries",
+  "params": {},
+  "parentPageName": "workspace",
+  "type": "page",
+  "url": "/countries",
+  "variables": [
+    {
+      "id": "service",
+      "name": "countryData",
+      "resourceIdentity": "services/country-data",
+      "type": "service"
+    },
+    {
+      "name": "$q",
+      "type": "service"
+    },
+    {
+      "name": "$timeout",
+      "type": "service"
+    },
+    {
+      "name": "$window",
+      "type": "service"
+    },
+    {
+      "description": "Local search across name, native, code, and capital.",
+      "name": "searchQuery",
+      "type": "property",
+      "value": "''"
+    },
+    {
+      "description": "Selected service-derived continent code or all.",
+      "name": "continent",
+      "type": "property",
+      "value": "'all'"
+    },
+    {
+      "description": "Local name ordering, asc or desc.",
+      "name": "sortOrder",
+      "type": "property",
+      "value": "'asc'"
+    },
+    {
+      "description": "Dropdown options built only from countryData.continents.",
+      "name": "continentOptions",
+      "type": "property",
+      "value": "[{label: 'All continents', value: 'all'}]"
+    },
+    {
+      "description": "Full-directory metrics; unknown until a successful service load.",
+      "name": "metrics",
+      "type": "property",
+      "value": "{countries: '—', continents: '—', languages: '—'}"
+    },
+    {
+      "description": "Filtered and sorted copy; never mutates the shared cache.",
+      "name": "filteredCountries",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "At most twelve normalized country records for the current page.",
+      "name": "pageCountries",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "One-based core pagination state, clamped on every slice.",
+      "name": "currentPage",
+      "type": "property",
+      "value": "1"
+    },
+    {
+      "description": "Ceiling of filtered count divided by twelve, with an internal minimum of one.",
+      "name": "totalPages",
+      "type": "property",
+      "value": "1"
+    },
+    {
+      "description": "Accessible exact range and filtered record count.",
+      "name": "resultSummary",
+      "type": "property",
+      "value": "'No countries loaded yet.'"
+    },
+    {
+      "description": "Page-owned pending request flag; also consult shared service loading.",
+      "name": "loading",
+      "type": "property",
+      "value": "false"
+    },
+    {
+      "description": "Safe load failure message, retaining previously cached results.",
+      "name": "loadError",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Currently inspected normalized country; inline only.",
+      "name": "selectedCountry",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Plain-text definition-list rows derived from the selected record.",
+      "name": "detailFields",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "Initiating DOM control, used only for focus restoration.",
+      "name": "returnFocus",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "body": "const records = $ctrl.countryData.countries || [];\n$ctrl.continentOptions = [{ label: 'All continents', value: 'all' }].concat(($ctrl.countryData.continents || []).map(c => ({ label: c.name, value: c.code })));\nif ($ctrl.countryData.lastUpdated != null) {\n  const continents = new Set(records.map(c => c.continentCode).filter(Boolean));\n  const languages = new Set(records.flatMap(c => Array.isArray(c.languages) ? c.languages : []).filter(name => typeof name === 'string' && name.trim()).map(name => name.trim()));\n  $ctrl.metrics = { countries: String(records.length), continents: String(continents.size), languages: String(languages.size) };\n} else {\n  $ctrl.metrics = { countries: '—', continents: '—', languages: '—' };\n}\n$ctrl.applyFilters(false);",
+      "description": "Recomputes metrics and continent options from the normalized shared cache, then clamps the local page without mutating service arrays.",
+      "invokeOnLoad": true,
+      "isAsync": false,
+      "name": "syncData",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": [
+        "$ctrl.countryData.countries",
+        "$ctrl.countryData.continents",
+        "$ctrl.countryData.lastUpdated"
+      ]
+    },
+    {
+      "body": "if ($ctrl.loading) { return; }\n$ctrl.loading = true;\n$ctrl.loadError = null;\n// The service owns network access, shared in-flight work, and caching.\nreturn $ctrl.$q.when().then(() => $ctrl.countryData.loadCountries(force === true)).then(() => {\n  $ctrl.syncData();\n}).catch(() => {\n  $ctrl.loadError = 'Unable to load country data. Please try again. Previously loaded data, if available, is still shown.';\n}).finally(() => {\n  $ctrl.loading = false;\n});",
+      "description": "Initial cached load, or forced Refresh/Retry. Uses Angular promise callbacks for digest-safe success, caught failure, and final cleanup; retains cached records on failure.",
+      "invokeOnLoad": true,
+      "isAsync": false,
+      "name": "loadCountries",
+      "parameters": [
+        "force"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const query = String($ctrl.searchQuery || '').trim().toLocaleLowerCase();\nconst records = $ctrl.countryData.countries || [];\n$ctrl.filteredCountries = records.filter(c => ($ctrl.continent === 'all' || c.continentCode === $ctrl.continent) && (!query || [c.name, c.native, c.code, c.capital].some(value => String(value || '').toLocaleLowerCase().includes(query)))).slice().sort((a, b) => {\n  const order = a.name.localeCompare(b.name) || a.code.localeCompare(b.code);\n  return $ctrl.sortOrder === 'desc' ? -order : order;\n});\n$ctrl.totalPages = Math.max(1, Math.ceil($ctrl.filteredCountries.length / 12));\n$ctrl.changePage(resetPage ? 1 : $ctrl.currentPage);",
+      "description": "Case-insensitive search and exact continent match, followed by deterministic name sorting. Resets page on user filter/sort actions; clamps on data refresh.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "applyFilters",
+      "parameters": [
+        "resetPage"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.searchQuery = newValue;\n$ctrl.applyFilters(true);",
+      "description": "Core Text Input callback receives newValue and event after its 250 ms debounce, explicitly stores the search and resets filtered pagination.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "onSearchChanged",
+      "parameters": [
+        "newValue",
+        "event"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.continent = value;\n$ctrl.applyFilters(true);",
+      "description": "Core Dropdown callback explicitly stores its value local as the continent before filtering and resetting page one.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "onContinentChanged",
+      "parameters": [
+        "value",
+        "event"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.sortOrder = value;\n$ctrl.applyFilters(true);",
+      "description": "Core Dropdown callback explicitly stores its value local as the sort order before filtering and resetting page one.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "onSortOrderChanged",
+      "parameters": [
+        "value",
+        "event"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.currentPage = Math.max(1, Math.min($ctrl.totalPages, Math.floor(Number(currentPage) || 1)));\nconst count = $ctrl.filteredCountries.length;\nconst start = ($ctrl.currentPage - 1) * 12;\n$ctrl.pageCountries = $ctrl.filteredCountries.slice(start, start + 12);\n$ctrl.resultSummary = count ? 'Showing ' + (start + 1) + '–' + Math.min(start + 12, count) + ' of ' + count + ' countries' : '0 countries match your filters';",
+      "description": "Clamps page number, slices twelve results, and calculates an accurate zero-safe range.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "changePage",
+      "parameters": [
+        "currentPage"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.searchQuery = '';\n$ctrl.continent = 'all';\n$ctrl.sortOrder = 'asc';\n$ctrl.applyFilters(true);",
+      "description": "Restores all continents, an empty search, A–Z sorting and page one. Used by both filter-bar and empty-state Reset actions.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "resetFilters",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "if (!country) { return; }\n$ctrl.returnFocus = $ctrl.$window.document.activeElement;\n$ctrl.selectedCountry = country;\nconst phone = country.phone ? String(country.phone).split(',').map(code => '+' + code.trim().replace(/^\\+/, '')).join(', ') : '—';\n$ctrl.detailFields = [\n  { label: 'Name', value: country.name || '—' },\n  { label: 'Native name', value: country.native || '—' },\n  { label: 'Capital', value: country.capital || '—' },\n  { label: 'Currency', value: country.currency || '—' },\n  { label: 'Calling code', value: phone },\n  { label: 'Languages', value: country.languages && country.languages.length ? country.languages.join(', ') : '—' },\n  { label: 'Continent', value: country.continentName || '—' },\n  { label: 'ISO code', value: country.code || '—' }\n];\n$ctrl.$timeout(() => {\n  const heading = $ctrl.$window.document.getElementById('pw-country-detail-heading');\n  if (heading) { heading.focus(); }\n}, 0);",
+      "description": "Receives the card callback's named country local, builds all detail rows and focuses the inline heading after it mounts.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "selectCountry",
+      "parameters": [
+        "country"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.selectedCountry = null;\n$ctrl.$timeout(() => {\n  const document = $ctrl.$window.document;\n  const target = $ctrl.returnFocus && document.contains($ctrl.returnFocus) ? $ctrl.returnFocus : document.getElementById('pw-countries-results');\n  if (target) { target.focus(); }\n  $ctrl.returnFocus = null;\n}, 0);",
+      "description": "Closes the inline region and restores the initiating button focus, falling back to the results heading when the card is no longer mounted.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "closeDetails",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    }
+  ]
+}

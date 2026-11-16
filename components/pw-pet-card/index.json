@@ -1,0 +1,509 @@
+{
+  "bindings": [
+    {
+      "actions": [],
+      "default": "{}",
+      "description": "Service-normalized pet input: id (integer number or integer string), name, category, status and tags (string[]). Displayed directly without copying or mutating the input.",
+      "example": "",
+      "group": "",
+      "label": "",
+      "name": "pet",
+      "propertyType": "object",
+      "type": "<",
+      "visibleWhen": ""
+    },
+    {
+      "actions": [],
+      "default": "false",
+      "description": "Reduces visual-panel height and content padding without hiding pet information.",
+      "example": "",
+      "group": "",
+      "label": "",
+      "name": "compact",
+      "propertyType": "boolean",
+      "type": "<",
+      "visibleWhen": ""
+    }
+  ],
+  "children": [
+    {
+      "children": [
+        {
+          "attributes": [
+            {
+              "property": "aria-hidden",
+              "value": "true"
+            }
+          ],
+          "children": [
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "children": [],
+              "classList": [
+                "text-6xl",
+                "[&_i]:text-6xl",
+                "[&_svg]:text-6xl",
+                "[&_i]:text-teal-700",
+                "[&_svg]:text-teal-700"
+              ],
+              "expressions": [
+                {
+                  "expression": "''",
+                  "to": "text"
+                },
+                {
+                  "expression": "'outline'",
+                  "to": "type"
+                },
+                {
+                  "expression": "'default'",
+                  "to": "colorScheme"
+                },
+                {
+                  "expression": "{type: 'font-icon', style: 'solid', name: 'paw', position: 'left'}",
+                  "to": "icon"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "growFactor": 0,
+                  "mainSize": "auto",
+                  "shrinkFactor": 0,
+                  "type": "box-item"
+                }
+              },
+              "name": "Badge",
+              "nodeName": "bln-badge",
+              "type": "core-component"
+            }
+          ],
+          "classList": [
+            "bg-teal-50",
+            "text-teal-700",
+            "border-b",
+            "border-teal-100"
+          ],
+          "comments": "Decorative pale-teal panel uses the core Badge's verified Font Awesome paw icon; no image asset or manual icon markup.",
+          "conditionalClasses": [
+            {
+              "className": "h-32",
+              "condition": "$ctrl.compact"
+            },
+            {
+              "className": "h-44",
+              "condition": "!$ctrl.compact"
+            }
+          ],
+          "layout": {
+            "cell": {
+              "growFactor": 0,
+              "mainSize": "auto",
+              "shrinkFactor": 0,
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "center",
+              "gap": "0",
+              "mainAxisAlignment": "center",
+              "orientation": "row",
+              "type": "box"
+            }
+          },
+          "name": "div"
+        },
+        {
+          "children": [
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "children": [],
+              "classList": [
+                "max-w-full",
+                "whitespace-normal",
+                "break-words",
+                "[overflow-wrap:anywhere]"
+              ],
+              "displayExpression": "$ctrl.pet.status",
+              "expressions": [
+                {
+                  "expression": "$ctrl.pet.status || 'unknown'",
+                  "to": "text"
+                },
+                {
+                  "expression": "$ctrl.pet.status === 'available' ? 'green' : ($ctrl.pet.status === 'pending' ? 'yellow' : ($ctrl.pet.status === 'adopted' ? 'blue' : 'default'))",
+                  "to": "colorScheme"
+                },
+                {
+                  "expression": "'solid'",
+                  "to": "type"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "crossAxisAlignment": "flex-start",
+                  "growFactor": 0,
+                  "mainSize": "auto",
+                  "shrinkFactor": 1,
+                  "type": "box-item"
+                }
+              },
+              "name": "Badge",
+              "nodeName": "bln-badge",
+              "type": "core-component"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "evaluate": true,
+                      "name": "text",
+                      "textContent": "$ctrl.pet.name || 'Unnamed pet'"
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-xl",
+                    "font-semibold",
+                    "leading-snug",
+                    "whitespace-normal",
+                    "break-words",
+                    "[overflow-wrap:anywhere]"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "growFactor": 0,
+                      "mainSize": "auto",
+                      "shrinkFactor": 1,
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "h3"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": true,
+                      "name": "text",
+                      "textContent": "$ctrl.pet.category || 'Uncategorized'"
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-sm",
+                    "text-slate-600",
+                    "whitespace-normal",
+                    "break-words",
+                    "[overflow-wrap:anywhere]"
+                  ],
+                  "displayExpression": "$ctrl.pet.category",
+                  "layout": {
+                    "cell": {
+                      "growFactor": 0,
+                      "mainSize": "auto",
+                      "shrinkFactor": 1,
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "p"
+                }
+              ],
+              "classList": [
+                "min-w-0"
+              ],
+              "layout": {
+                "cell": {
+                  "growFactor": 0,
+                  "mainSize": "auto",
+                  "shrinkFactor": 1,
+                  "type": "box-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "stretch",
+                  "gap": "4px",
+                  "mainAxisAlignment": "flex-start",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "div"
+            },
+            {
+              "children": [
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "max-w-full",
+                    "whitespace-normal",
+                    "break-words",
+                    "[overflow-wrap:anywhere]"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "tag",
+                      "to": "text"
+                    },
+                    {
+                      "expression": "'outline'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "'default'",
+                      "to": "colorScheme"
+                    }
+                  ],
+                  "iterate": {
+                    "array": "($ctrl.pet.tags || []) | limitTo:3",
+                    "trackByIndex": true,
+                    "variable": "tag"
+                  },
+                  "layout": {
+                    "cell": {
+                      "growFactor": 0,
+                      "mainSize": "auto",
+                      "shrinkFactor": 1,
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Badge",
+                  "nodeName": "bln-badge",
+                  "type": "core-component"
+                }
+              ],
+              "classList": [],
+              "comments": "At most three service-normalized supplied tags, read directly from the live input. Vertical layout remains readable at narrow widths and with very long API strings.",
+              "displayExpression": "$ctrl.pet.tags.length",
+              "layout": {
+                "cell": {
+                  "growFactor": 0,
+                  "mainSize": "auto",
+                  "shrinkFactor": 1,
+                  "type": "box-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "flex-start",
+                  "gap": "6px",
+                  "mainAxisAlignment": "flex-start",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "div"
+            },
+            {
+              "children": [
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "text-sm",
+                    "font-medium",
+                    "text-teal-800",
+                    "[&_a]:text-teal-800",
+                    "[&_a]:rounded",
+                    "[&_a]:underline",
+                    "[&_a]:underline-offset-4",
+                    "[&_a:hover]:text-teal-950",
+                    "[&_a:focus-visible]:outline",
+                    "[&_a:focus-visible]:outline-2",
+                    "[&_a:focus-visible]:outline-offset-4",
+                    "[&_a:focus-visible]:outline-teal-700"
+                  ],
+                  "displayExpression": "$ctrl.getDetailLink()",
+                  "expressions": [
+                    {
+                      "expression": "'View details'",
+                      "to": "text"
+                    },
+                    {
+                      "expression": "$ctrl.getDetailLink()",
+                      "to": "link"
+                    },
+                    {
+                      "expression": "'current_window'",
+                      "to": "openIn"
+                    },
+                    {
+                      "expression": "'View details for ' + ($ctrl.pet.name || 'this pet')",
+                      "to": "tooltip"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "growFactor": 0,
+                      "mainSize": "auto",
+                      "shrinkFactor": 1,
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Link",
+                  "nodeName": "bln-link",
+                  "type": "core-component"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "Details unavailable"
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-sm",
+                    "text-slate-500"
+                  ],
+                  "displayExpression": "!$ctrl.getDetailLink()",
+                  "layout": {
+                    "cell": {
+                      "growFactor": 0,
+                      "mainSize": "auto",
+                      "shrinkFactor": 1,
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "p"
+                }
+              ],
+              "classList": [
+                "pt-4",
+                "border-t",
+                "border-slate-100",
+                "min-w-0"
+              ],
+              "comments": "Growing footer preserves the single keyboard-operable detail link and actual-anchor focus styling. Runtime fix: mount core Link only for a validated ID; disabling an empty-parameter Link still lets core emit invalid ui-sref. Missing/invalid IDs show neutral text instead.",
+              "layout": {
+                "cell": {
+                  "growFactor": 1,
+                  "mainSize": "auto",
+                  "shrinkFactor": 0,
+                  "type": "box-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "flex-start",
+                  "gap": "0",
+                  "mainAxisAlignment": "flex-end",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "div"
+            }
+          ],
+          "classList": [
+            "min-w-0"
+          ],
+          "conditionalClasses": [
+            {
+              "className": "p-4",
+              "condition": "$ctrl.compact"
+            },
+            {
+              "className": "p-6",
+              "condition": "!$ctrl.compact"
+            }
+          ],
+          "layout": {
+            "cell": {
+              "growFactor": 1,
+              "mainSize": "auto",
+              "shrinkFactor": 1,
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "stretch",
+              "gap": "12px",
+              "mainAxisAlignment": "flex-start",
+              "orientation": "column",
+              "type": "box"
+            }
+          },
+          "name": "div"
+        }
+      ],
+      "classList": [
+        "w-full",
+        "min-w-0",
+        "h-full",
+        "overflow-hidden",
+        "rounded-xl",
+        "border",
+        "border-slate-200",
+        "bg-white",
+        "text-slate-900",
+        "shadow-sm",
+        "transition-shadow",
+        "duration-200",
+        "hover:shadow-md",
+        "hover:border-teal-300",
+        "focus-within:ring-2",
+        "focus-within:ring-teal-700",
+        "focus-within:ring-offset-2",
+        "motion-reduce:transition-none"
+      ],
+      "comments": "Non-interactive card shell: only the core detail Link is focusable. Focus-within highlights the entire card without adding redundant keyboard stops.",
+      "layout": {
+        "container": {
+          "crossAxisAlignment": "stretch",
+          "gap": "0",
+          "mainAxisAlignment": "flex-start",
+          "orientation": "column",
+          "type": "box"
+        }
+      },
+      "name": "article"
+    }
+  ],
+  "description": "## Pet card\nReusable Petworld card consuming the service-normalized, read-only `pet` input directly: `{ id, name, category, status, tags: string[] }`. Optional `compact` reduces spacing and visual-panel height. Visible name, category, status, status color and up to three tags read the current input, with safe fallbacks. No services, assets, images, or invented pet attributes.\n\nUses verified core Badge and Link components, built-in box layouts, and escaped text nodes. The decorative paw uses the existing core Badge icon renderer with an empty label. The card is not an extra tab stop; the core Link supplies keyboard navigation, with visible link focus and a card-level focus-within ring.\n\n### Runtime fix\nRemoved the copied `normalizedPet` state, initialization and JSON watcher: invokeOnLoad can precede input bindings, leaving the old display copy empty. Direct input bindings now reflect late/replaced/mutated normalized input without lifecycle synchronization. `getDetailLink()` validates integer number/string IDs and memoizes the link by String(pet.id), avoiding digest-time object churn. Missing/invalid IDs render calm unavailable text instead of mounting a Link, preventing invalid empty ui-sref parameters.\n\nThe core Link targets the saved `workspace.pet-detail` page. Its LinkState parameters are strings, but the observed renderer inserts them directly into the ui-sref expression without quoting. Therefore parameters.id is JSON.stringify(String(id)): a safely quoted Angular/JS string literal, not a bare number or arbitrary API expression. For ID 123 the emitted expression is workspace.pet-detail({id:\"123\"}); int64 string IDs retain every digit without numeric conversion. This quoting is intentional for this core renderer.",
+  "modules": [],
+  "name": "pw-pet-card",
+  "styles": [],
+  "type": "custom-component",
+  "variables": [
+    {
+      "description": "Last valid String(pet.id) used solely as the link memoization key; not copied pet display state.",
+      "name": "detailLinkId",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Memoized valid LinkState for detailLinkId, or null before a valid ID is seen. Never initialized with empty route parameters.",
+      "name": "detailLink",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "body": "const raw = $ctrl.pet && $ctrl.pet.id;\nif (typeof raw !== 'string' && !(typeof raw === 'number' && Number.isFinite(raw) && Number.isInteger(raw))) {\n  return null;\n}\nconst id = String(raw);\nif (!/^-?\\d+$/.test(id) || id.length > 100) {\n  return null;\n}\nif ($ctrl.detailLinkId !== id || !$ctrl.detailLink) {\n  // Core Link emits parameter strings as expressions: quote to preserve string/int64 IDs safely.\n  $ctrl.detailLink = { type: 'state', state: 'workspace.pet-detail', parameters: { id: JSON.stringify(id) } };\n  $ctrl.detailLinkId = id;\n}\nreturn $ctrl.detailLink;",
+      "description": "Returns null for missing/invalid IDs; otherwise returns a stable link for the current string ID. Quotes parameters.id with JSON.stringify because core Link inserts parameter strings as raw ui-sref expressions. Never converts string IDs to numbers or evaluates API text.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "getDetailLink",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    }
+  ]
+}

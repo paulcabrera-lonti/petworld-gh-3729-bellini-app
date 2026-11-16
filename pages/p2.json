@@ -1,0 +1,24 @@
+{
+  "children": [
+    {
+      "attributes": [
+        {
+          "property": "core",
+          "value": ""
+        }
+      ],
+      "children": [],
+      "classList": [],
+      "expressions": [],
+      "name": "Breadcrumbs",
+      "nodeName": "bln-breadcrumbs",
+      "ownerName": null,
+      "type": "core-component"
+    }
+  ],
+  "name": "p2",
+  "params": {},
+  "type": "page",
+  "url": "/p2",
+  "variables": []
+}

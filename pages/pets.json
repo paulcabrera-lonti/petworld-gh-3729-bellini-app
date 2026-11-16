@@ -1,0 +1,1223 @@
+{
+  "children": [
+    {
+      "attributes": [
+        {
+          "property": "aria-labelledby",
+          "value": "pet-catalogue-title"
+        }
+      ],
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "PET CATALOGUE"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "mb-3",
+                "text-xs",
+                "font-semibold",
+                "tracking-widest",
+                "text-teal-700"
+              ],
+              "name": "p"
+            },
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "Find your kind of companion"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-3xl",
+                "md:text-4xl",
+                "font-semibold",
+                "tracking-tight",
+                "leading-tight",
+                "break-words"
+              ],
+              "elementId": "pet-catalogue-title",
+              "name": "h1"
+            },
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "Explore public demo records, not adoption listings. Browse names, categories and tags to discover the Petstore sample catalogue."
+                }
+              ],
+              "classList": [
+                "m-0",
+                "mt-4",
+                "max-w-2xl",
+                "text-sm",
+                "leading-6",
+                "text-slate-600"
+              ],
+              "name": "p"
+            }
+          ],
+          "classList": [],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "header"
+        },
+        {
+          "attributes": [
+            {
+              "property": "aria-label",
+              "value": "Filter pet catalogue"
+            }
+          ],
+          "children": [
+            {
+              "children": [
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "min-w-0",
+                    "[&_input:focus-visible]:ring-2",
+                    "[&_input:focus-visible]:ring-teal-600",
+                    "[&_input:focus-visible]:ring-offset-2"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "'Search pets'",
+                      "to": "label"
+                    },
+                    {
+                      "expression": "'search'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "$ctrl.searchQuery",
+                      "to": "value"
+                    },
+                    {
+                      "expression": "'Name, category, ID or tag'",
+                      "to": "placeholder"
+                    },
+                    {
+                      "expression": "'top'",
+                      "to": "labelPosition"
+                    },
+                    {
+                      "expression": "'Search this status by name, category, ID or any tag; case-insensitive.'",
+                      "to": "tooltip"
+                    },
+                    {
+                      "expression": "250",
+                      "to": "debounceDelay"
+                    },
+                    {
+                      "expression": "$ctrl.searchChanged()",
+                      "to": "onValueChange"
+                    }
+                  ],
+                  "formControl": {
+                    "modelName": "value"
+                  },
+                  "layout": {
+                    "cell": {
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "Text Input",
+                  "nodeName": "bln-text-input",
+                  "type": "core-component"
+                },
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "min-w-0",
+                    "focus-within:ring-2",
+                    "focus-within:ring-teal-600",
+                    "focus-within:ring-offset-2",
+                    "rounded-md"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "'Status'",
+                      "to": "label"
+                    },
+                    {
+                      "expression": "'top'",
+                      "to": "labelPosition"
+                    },
+                    {
+                      "expression": "$ctrl.status",
+                      "to": "value"
+                    },
+                    {
+                      "expression": "[{label: 'Available', value: 'available'}, {label: 'Pending', value: 'pending'}, {label: 'Sold', value: 'sold'}]",
+                      "to": "values"
+                    },
+                    {
+                      "expression": "false",
+                      "to": "allowOtherValues"
+                    },
+                    {
+                      "expression": "'Loads the selected status from the public demo service.'",
+                      "to": "tooltip"
+                    },
+                    {
+                      "expression": "$ctrl.statusChanged(value, event)",
+                      "to": "onValueChange"
+                    }
+                  ],
+                  "formControl": {
+                    "modelName": "value"
+                  },
+                  "layout": {
+                    "cell": {
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "Dropdown",
+                  "nodeName": "bln-dropdown",
+                  "type": "core-component"
+                },
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "min-w-0",
+                    "focus-within:ring-2",
+                    "focus-within:ring-teal-600",
+                    "focus-within:ring-offset-2",
+                    "rounded-md"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "'Category'",
+                      "to": "label"
+                    },
+                    {
+                      "expression": "'top'",
+                      "to": "labelPosition"
+                    },
+                    {
+                      "expression": "$ctrl.category",
+                      "to": "value"
+                    },
+                    {
+                      "expression": "$ctrl.categoryOptions",
+                      "to": "values"
+                    },
+                    {
+                      "expression": "false",
+                      "to": "allowOtherValues"
+                    },
+                    {
+                      "expression": "$ctrl.isLoading || !!$ctrl.loadError",
+                      "to": "disabled"
+                    },
+                    {
+                      "expression": "'Categories reported in the selected status; filters locally.'",
+                      "to": "tooltip"
+                    },
+                    {
+                      "expression": "$ctrl.categoryChanged(value, event)",
+                      "to": "onValueChange"
+                    }
+                  ],
+                  "formControl": {
+                    "modelName": "value"
+                  },
+                  "layout": {
+                    "cell": {
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "Dropdown",
+                  "nodeName": "bln-dropdown",
+                  "type": "core-component"
+                },
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "min-w-0",
+                    "focus-within:ring-2",
+                    "focus-within:ring-teal-600",
+                    "focus-within:ring-offset-2",
+                    "rounded-md"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "'Sort by'",
+                      "to": "label"
+                    },
+                    {
+                      "expression": "'top'",
+                      "to": "labelPosition"
+                    },
+                    {
+                      "expression": "$ctrl.sortOrder",
+                      "to": "value"
+                    },
+                    {
+                      "expression": "[{label: 'Name A–Z', value: 'asc'}, {label: 'Name Z–A', value: 'desc'}]",
+                      "to": "values"
+                    },
+                    {
+                      "expression": "false",
+                      "to": "allowOtherValues"
+                    },
+                    {
+                      "expression": "'Sort all matching pets by name before pagination.'",
+                      "to": "tooltip"
+                    },
+                    {
+                      "expression": "$ctrl.sortChanged(value, event)",
+                      "to": "onValueChange"
+                    }
+                  ],
+                  "formControl": {
+                    "modelName": "value"
+                  },
+                  "layout": {
+                    "cell": {
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "Dropdown",
+                  "nodeName": "bln-dropdown",
+                  "type": "core-component"
+                }
+              ],
+              "classList": [],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                },
+                "container": {
+                  "columnAxisAlignment": "stretch",
+                  "columnGap": "16px",
+                  "columns": [
+                    {
+                      "type": "other",
+                      "value": "repeat(auto-fit, minmax(min(100%, 180px), 1fr))"
+                    }
+                  ],
+                  "rowAxisAlignment": "start",
+                  "rowGap": "16px",
+                  "rows": [
+                    {
+                      "type": "other",
+                      "value": "auto"
+                    }
+                  ],
+                  "type": "grid"
+                }
+              },
+              "name": "div"
+            },
+            {
+              "children": [
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "rounded-md",
+                    "focus-within:ring-2",
+                    "focus-within:ring-teal-600",
+                    "focus-within:ring-offset-2"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "'Refresh'",
+                      "to": "label"
+                    },
+                    {
+                      "expression": "'secondary'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "$ctrl.isLoading",
+                      "to": "isDisabled"
+                    },
+                    {
+                      "expression": "'Fetch the selected status again without clearing shared caches.'",
+                      "to": "tooltip"
+                    },
+                    {
+                      "expression": "$ctrl.refresh()",
+                      "to": "onClick"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "growFactor": 0,
+                      "mainSize": "auto",
+                      "shrinkFactor": 1,
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Button",
+                  "nodeName": "bln-button",
+                  "type": "core-component"
+                },
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "rounded-md",
+                    "focus-within:ring-2",
+                    "focus-within:ring-teal-600",
+                    "focus-within:ring-offset-2"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "'Clear filters'",
+                      "to": "label"
+                    },
+                    {
+                      "expression": "'default'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "'Clear search and category, restore Available and Name A–Z, and return to page 1.'",
+                      "to": "tooltip"
+                    },
+                    {
+                      "expression": "$ctrl.clearFilters()",
+                      "to": "onClick"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "growFactor": 0,
+                      "mainSize": "auto",
+                      "shrinkFactor": 1,
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Button",
+                  "nodeName": "bln-button",
+                  "type": "core-component"
+                }
+              ],
+              "classList": [
+                "pt-4",
+                "border-t",
+                "border-slate-100"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "center",
+                  "gap": "12px",
+                  "mainAxisAlignment": "flex-start",
+                  "orientation": "row",
+                  "type": "box"
+                }
+              },
+              "name": "div"
+            }
+          ],
+          "classList": [
+            "rounded-xl",
+            "border",
+            "border-slate-200",
+            "bg-white",
+            "p-5",
+            "shadow-sm"
+          ],
+          "comments": "Core labelled controls retain native keyboard behavior. Grid auto-fit tracks reflow the toolbar without duplicating controls. Descendant focus-visible rings target the actual rendered input/button. Dropdown callbacks explicitly assign the verified value local before recomputing; watches are supplementary.",
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "stretch",
+              "gap": "16px",
+              "mainAxisAlignment": "flex-start",
+              "orientation": "column",
+              "type": "box"
+            }
+          },
+          "name": "section"
+        },
+        {
+          "attributes": [
+            {
+              "property": "aria-live",
+              "value": "polite"
+            },
+            {
+              "property": "aria-atomic",
+              "value": "true"
+            }
+          ],
+          "children": [
+            {
+              "children": [
+                {
+                  "evaluate": true,
+                  "name": "text",
+                  "textContent": "$ctrl.isLoading || $ctrl.requestedStatus !== $ctrl.status ? 'Loading records…' : $ctrl.loadError ? 'Results unavailable' : $ctrl.filteredPets.length + ($ctrl.filteredPets.length === 1 ? ' pet found' : ' pets found')"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-base",
+                "font-medium",
+                "break-words"
+              ],
+              "layout": {
+                "cell": {
+                  "growFactor": 1,
+                  "mainSize": "auto",
+                  "shrinkFactor": 1,
+                  "type": "box-item"
+                }
+              },
+              "name": "h2"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "children": [],
+              "classList": [],
+              "expressions": [
+                {
+                  "expression": "$ctrl.status === 'available' ? 'Available' : $ctrl.status === 'pending' ? 'Pending' : 'Sold'",
+                  "to": "text"
+                },
+                {
+                  "expression": "'outline'",
+                  "to": "type"
+                },
+                {
+                  "expression": "$ctrl.status === 'available' ? 'green' : $ctrl.status === 'pending' ? 'yellow' : 'default'",
+                  "to": "colorScheme"
+                },
+                {
+                  "expression": "'Selected public demo status; not verified adoption availability.'",
+                  "to": "tooltip"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "growFactor": 0,
+                  "mainSize": "auto",
+                  "shrinkFactor": 0,
+                  "type": "box-item"
+                }
+              },
+              "name": "Badge",
+              "nodeName": "bln-badge",
+              "type": "core-component"
+            }
+          ],
+          "classList": [],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "center",
+              "gap": "12px",
+              "mainAxisAlignment": "space-between",
+              "orientation": "row",
+              "type": "box"
+            }
+          },
+          "name": "div"
+        },
+        {
+          "children": [],
+          "classList": [],
+          "displayExpression": "$ctrl.isLoading || $ctrl.requestedStatus !== $ctrl.status",
+          "expressions": [
+            {
+              "expression": "'loading'",
+              "to": "kind"
+            },
+            {
+              "expression": "'Loading the catalogue'",
+              "to": "title"
+            },
+            {
+              "expression": "'Fetching ' + $ctrl.status + ' public demo records. Please wait.'",
+              "to": "message"
+            }
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "pw-feedback",
+          "ownerId": "6afa9b10de45780c01651671",
+          "ownerType": "app",
+          "resourceIdentity": "components/pw-feedback",
+          "type": "custom-component"
+        },
+        {
+          "children": [],
+          "classList": [],
+          "comments": "onRetry is an invocation expression with no locals, matching pw-feedback's public callback contract.",
+          "displayExpression": "!$ctrl.isLoading && $ctrl.requestedStatus === $ctrl.status && $ctrl.loadError",
+          "expressions": [
+            {
+              "expression": "'error'",
+              "to": "kind"
+            },
+            {
+              "expression": "'We could not load these pets'",
+              "to": "title"
+            },
+            {
+              "expression": "$ctrl.loadError",
+              "to": "message"
+            },
+            {
+              "expression": "'Retry catalogue'",
+              "to": "retryLabel"
+            },
+            {
+              "expression": "$ctrl.refresh()",
+              "to": "onRetry"
+            }
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "pw-feedback",
+          "ownerId": "6afa9b10de45780c01651671",
+          "ownerType": "app",
+          "resourceIdentity": "components/pw-feedback",
+          "type": "custom-component"
+        },
+        {
+          "children": [],
+          "classList": [],
+          "comments": "An empty returned list is different from zero client matches. The filter toolbar remains available in both states.",
+          "displayExpression": "!$ctrl.isLoading && !$ctrl.loadError && $ctrl.requestedStatus === $ctrl.status && !$ctrl.filteredPets.length",
+          "expressions": [
+            {
+              "expression": "'empty'",
+              "to": "kind"
+            },
+            {
+              "expression": "$ctrl.allPets.length ? 'No pets match your filters' : 'No pets in this status'",
+              "to": "title"
+            },
+            {
+              "expression": "$ctrl.allPets.length ? 'Try another search or category, or use Clear filters to start again.' : 'The public demo returned no pets for this status. Choose another status or refresh later.'",
+              "to": "message"
+            }
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "pw-feedback",
+          "ownerId": "6afa9b10de45780c01651671",
+          "ownerType": "app",
+          "resourceIdentity": "components/pw-feedback",
+          "type": "custom-component"
+        },
+        {
+          "attributes": [
+            {
+              "property": "aria-label",
+              "value": "Pet catalogue results"
+            }
+          ],
+          "children": [
+            {
+              "children": [],
+              "classList": [
+                "min-w-0",
+                "h-full"
+              ],
+              "expressions": [
+                {
+                  "expression": "pet",
+                  "to": "pet"
+                },
+                {
+                  "expression": "false",
+                  "to": "compact"
+                }
+              ],
+              "iterate": {
+                "array": "$ctrl.visiblePets",
+                "variable": "pet"
+              },
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                }
+              },
+              "name": "pw-pet-card",
+              "ownerId": "6afa9b10de45780c01651671",
+              "ownerType": "app",
+              "resourceIdentity": "components/pw-pet-card",
+              "type": "custom-component"
+            }
+          ],
+          "classList": [
+            "min-w-0",
+            "[--pet-columns:1]",
+            "md:[--pet-columns:2]",
+            "lg:[--pet-columns:3]"
+          ],
+          "comments": "Responsive CSS variable supplies the built-in Grid track count (1 mobile / 2 tablet / 3 desktop). Only this page's precomputed slice is mounted; cards provide their own concrete detail links, plain-text wrapping, and keyboard focus styling.",
+          "displayExpression": "!$ctrl.isLoading && !$ctrl.loadError && $ctrl.requestedStatus === $ctrl.status && $ctrl.visiblePets.length",
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "columnAxisAlignment": "stretch",
+              "columnGap": "24px",
+              "columns": [
+                {
+                  "type": "other",
+                  "value": "repeat(var(--pet-columns), minmax(0, 1fr))"
+                }
+              ],
+              "rowAxisAlignment": "stretch",
+              "rowGap": "24px",
+              "rows": [
+                {
+                  "type": "other",
+                  "value": "auto"
+                }
+              ],
+              "type": "grid"
+            }
+          },
+          "name": "div"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "evaluate": true,
+                  "name": "text",
+                  "textContent": "'Showing ' + $ctrl.rangeStart + '–' + $ctrl.rangeEnd + ' of ' + $ctrl.filteredPets.length + ' · 12 per page'"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-xs",
+                "text-slate-500",
+                "text-center"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "p"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                },
+                {
+                  "property": "aria-label",
+                  "value": "Pet catalogue pages"
+                }
+              ],
+              "children": [],
+              "classList": [
+                "max-w-full",
+                "[&_button:focus-visible]:ring-2",
+                "[&_button:focus-visible]:ring-teal-600",
+                "[&_button:focus-visible]:ring-offset-2"
+              ],
+              "comments": "Verified two-way currentPage plus onPageChange(currentPage). One callback assigns the selected page and slices for all navigation, including first/last; separate first/last callbacks are unnecessary and would duplicate slicing.",
+              "expressions": [
+                {
+                  "expression": "$ctrl.currentPage",
+                  "to": "currentPage"
+                },
+                {
+                  "expression": "$ctrl.totalPages",
+                  "to": "totalPages"
+                },
+                {
+                  "expression": "'currentPageAndTotalPages'",
+                  "to": "display"
+                },
+                {
+                  "expression": "true",
+                  "to": "showFirstPageButton"
+                },
+                {
+                  "expression": "true",
+                  "to": "showLastPageButton"
+                },
+                {
+                  "expression": "$ctrl.pageChanged(currentPage)",
+                  "to": "onPageChange"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "Pagination",
+              "nodeName": "bln-pagination",
+              "type": "core-component"
+            }
+          ],
+          "classList": [
+            "rounded-lg",
+            "border",
+            "border-slate-200",
+            "bg-white",
+            "p-4"
+          ],
+          "displayExpression": "!$ctrl.isLoading && !$ctrl.loadError && $ctrl.requestedStatus === $ctrl.status && $ctrl.filteredPets.length",
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "center",
+              "gap": "12px",
+              "mainAxisAlignment": "flex-start",
+              "orientation": "column",
+              "type": "box"
+            }
+          },
+          "name": "div"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "Public demo data is shared and may change or disappear. Records are not adoption listings."
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-xs",
+                "leading-5",
+                "text-slate-500"
+              ],
+              "name": "p"
+            },
+            {
+              "children": [
+                {
+                  "evaluate": true,
+                  "name": "text",
+                  "textContent": "$ctrl.updatedAt ? 'Last updated: ' + ($ctrl.updatedAt | date:'MMM d, y, h:mm:ss a') : 'Last updated: not yet available for this selection'"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "mt-1",
+                "text-xs",
+                "leading-5",
+                "text-slate-500"
+              ],
+              "name": "p"
+            }
+          ],
+          "classList": [
+            "border-t",
+            "border-slate-200",
+            "pt-4"
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "footer"
+        }
+      ],
+      "classList": [
+        "min-w-0",
+        "w-full",
+        "text-slate-900"
+      ],
+      "layout": {
+        "container": {
+          "crossAxisAlignment": "stretch",
+          "gap": "24px",
+          "mainAxisAlignment": "flex-start",
+          "orientation": "column",
+          "type": "box"
+        }
+      },
+      "name": "section"
+    }
+  ],
+  "description": "## Pet catalogue\nThe workspace.pets child route renders at /app/pets inside the persistent workspace shell. Existing pet cards provide detail navigation. Loads normalized public demo records through petData without modifying shared service data or caches.\n\nDropdown value models are two-way; explicit onValueChange(value, event) handlers assign the associated selection before calling syncStatus or onLocalFilters. Watches remain supplementary rather than the sole update path. syncStatus sets requestedStatus synchronously through loadPets, deduplicating initialization, callback and watch triggers for the same status. Category and sort callbacks only recompute local results; search retains its 250 ms debounce and reads the latest model. Pagination onPageChange(currentPage) explicitly assigns the page before slicing. Stale-response protection, retry behavior and existing presentation are unchanged.",
+  "name": "pets",
+  "params": {},
+  "parentPageName": "workspace",
+  "type": "page",
+  "url": "/pets",
+  "variables": [
+    {
+      "id": "service",
+      "name": "petData",
+      "resourceIdentity": "services/pet-data",
+      "type": "service"
+    },
+    {
+      "name": "$q",
+      "type": "service"
+    },
+    {
+      "description": "Two-way search model; the core input debounces its change callback by 250 ms. Callbacks read the current model so delayed callbacks cannot resurrect cleared text.",
+      "name": "searchQuery",
+      "type": "property",
+      "value": "''"
+    },
+    {
+      "description": "Two-way server-selected status; explicit Dropdown callback assigns its value before syncStatus. Defaults to available.",
+      "name": "status",
+      "type": "property",
+      "value": "'available'"
+    },
+    {
+      "description": "Two-way client category selection; explicit Dropdown callback assigns its value before local filtering. The all-categories sentinel cannot collide with prefixed category values.",
+      "name": "category",
+      "type": "property",
+      "value": "'*'"
+    },
+    {
+      "description": "Two-way Name A–Z or Z–A selection; explicit Dropdown callback assigns its value before local sorting on a new page-local array.",
+      "name": "sortOrder",
+      "type": "property",
+      "value": "'asc'"
+    },
+    {
+      "description": "Dropdown items derived from the full successful normalized list, never from filtered/paginated results.",
+      "name": "categoryOptions",
+      "type": "property",
+      "value": "[{label: 'All categories', value: '*'}]"
+    },
+    {
+      "description": "Page-local shallow copy of the latest accepted normalized list. Never sorted or mutated in the shared service.",
+      "name": "allPets",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "Lowercase search text cached once per returned pet, containing name, category, original string ID, and every tag.",
+      "name": "searchIndex",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "Computed filtered, sorted snapshot; never recalculated from a view expression.",
+      "name": "filteredPets",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "At most 12 pets sliced for the current client page.",
+      "name": "visiblePets",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "One-based two-way core Pagination model. Its verified onPageChange(currentPage) callback explicitly assigns the selected page before slicing; filter/load changes reset it.",
+      "name": "currentPage",
+      "type": "property",
+      "value": "1"
+    },
+    {
+      "description": "Fixed client page size.",
+      "name": "pageSize",
+      "type": "property",
+      "value": "12"
+    },
+    {
+      "description": "",
+      "name": "totalPages",
+      "type": "property",
+      "value": "1"
+    },
+    {
+      "description": "",
+      "name": "rangeStart",
+      "type": "property",
+      "value": "0"
+    },
+    {
+      "description": "",
+      "name": "rangeEnd",
+      "type": "property",
+      "value": "0"
+    },
+    {
+      "description": "Local active-request state; stale requests cannot clear it.",
+      "name": "isLoading",
+      "type": "property",
+      "value": "false"
+    },
+    {
+      "description": "Escaped service rejection message for the current selection; retry forces the selected list to reload.",
+      "name": "loadError",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Monotonic local selection token; service caching and request deduplication remain untouched.",
+      "name": "requestToken",
+      "type": "property",
+      "value": "0"
+    },
+    {
+      "description": "Status associated with the latest local request, assigned synchronously before service work to deduplicate initialization, explicit callbacks and status watches, and gate card visibility.",
+      "name": "requestedStatus",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Successful network timestamp read only from matching public service state, never fabricated on cache access.",
+      "name": "updatedAt",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "body": "$ctrl.totalPages = Math.max(1, Math.ceil($ctrl.filteredPets.length / $ctrl.pageSize));\n$ctrl.currentPage = Math.max(1, Math.min($ctrl.totalPages, Math.floor(Number($ctrl.currentPage) || 1)));\nconst offset = ($ctrl.currentPage - 1) * $ctrl.pageSize;\n$ctrl.visiblePets = $ctrl.filteredPets.slice(offset, offset + $ctrl.pageSize);\n$ctrl.rangeStart = $ctrl.filteredPets.length ? offset + 1 : 0;\n$ctrl.rangeEnd = Math.min(offset + $ctrl.pageSize, $ctrl.filteredPets.length);",
+      "description": "Clamps the current page and slices a maximum of 12 entries. Called after recomputation and after the explicit Pagination handler assigns its callback value.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "slicePage",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const query = String($ctrl.searchQuery || '').trim().toLocaleLowerCase();\nconst category = $ctrl.category;\nconst direction = $ctrl.sortOrder === 'desc' ? -1 : 1;\n// Filtering creates a new array; never sort shared service data.\n$ctrl.filteredPets = $ctrl.searchIndex.filter(entry => (!query || entry.text.includes(query)) && (category === '*' || 'category:' + entry.pet.category === category)).map(entry => entry.pet).sort((a, b) => direction * (a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }) || String(a.id).localeCompare(String(b.id))));\n$ctrl.currentPage = 1;\n$ctrl.slicePage();",
+      "description": "Computes search/category filtering and deterministic name sorting outside the digest view path. Resets pagination on every filter or accepted load.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "applyFilters",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.applyFilters();",
+      "description": "Recomputes local derived arrays from explicit category/sort callbacks and supplementary watches. Never requests data or modifies watched selections.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "onLocalFilters",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": [
+        "$ctrl.category",
+        "$ctrl.sortOrder"
+      ]
+    },
+    {
+      "body": "$ctrl.status = value;\nreturn $ctrl.syncStatus();",
+      "description": "Verified Dropdown onValueChange(value, event) adapter. Explicitly assigns the two-way status before syncStatus so recomputation does not depend on binding propagation timing. The requestedStatus guard deduplicates callback/watch/init loads.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "statusChanged",
+      "parameters": [
+        "value",
+        "event"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.category = value;\n$ctrl.onLocalFilters();",
+      "description": "Verified Dropdown onValueChange(value, event) adapter. Assigns the two-way category before local recomputation; no service request.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "categoryChanged",
+      "parameters": [
+        "value",
+        "event"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.sortOrder = value;\n$ctrl.onLocalFilters();",
+      "description": "Verified Dropdown onValueChange(value, event) adapter. Assigns the two-way sort selection before local recomputation; no service request.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "sortChanged",
+      "parameters": [
+        "value",
+        "event"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.currentPage = currentPage;\n$ctrl.slicePage();",
+      "description": "Verified Pagination onPageChange(currentPage) adapter for all page changes, including first/last. Pagination updates its two-way model before notifying; explicitly assigning the callback value also makes the slice independent of parent-binding propagation timing. No network work.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "pageChanged",
+      "parameters": [
+        "currentPage"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.applyFilters();",
+      "description": "Debounced search callback reads the latest model, including resets, rather than a potentially old callback argument.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "searchChanged",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const status = $ctrl.status;\nconst token = ++$ctrl.requestToken;\n$ctrl.requestedStatus = status;\n$ctrl.isLoading = true;\n$ctrl.loadError = null;\n$ctrl.updatedAt = null;\n$ctrl.allPets = [];\n$ctrl.searchIndex = [];\n$ctrl.filteredPets = [];\n$ctrl.categoryOptions = [{ label: 'All categories', value: '*' }];\n$ctrl.currentPage = 1;\n$ctrl.slicePage();\n// $q handles synchronous service failures as well as rejected service promises.\nreturn $ctrl.$q.when().then(() => $ctrl.petData.loadPets(status, !!force)).then(list => {\n  if (token !== $ctrl.requestToken || status !== $ctrl.status) { return; }\n  if (!Array.isArray(list)) { throw new Error('The pet service returned an invalid list. Please retry.'); }\n  $ctrl.allPets = list.slice();\n  $ctrl.searchIndex = $ctrl.allPets.map(pet => ({ pet: pet, text: [pet.name, pet.category, String(pet.id)].concat(pet.tags).join(' ').toLocaleLowerCase() }));\n  const categories = Array.from(new Set($ctrl.allPets.map(pet => pet.category))).sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));\n  $ctrl.categoryOptions = [{ label: 'All categories', value: '*' }].concat(categories.map(name => ({ label: name, value: 'category:' + name })));\n  if (!$ctrl.categoryOptions.some(option => option.value === $ctrl.category)) { $ctrl.category = '*'; }\n  // Only use a timestamp proven to describe this exact public service list.\n  if ($ctrl.petData.currentStatus === status && $ctrl.petData.pets === list) {\n    $ctrl.updatedAt = $ctrl.petData.lastUpdated;\n  }\n  $ctrl.applyFilters();\n}).catch(err => {\n  if (token !== $ctrl.requestToken || status !== $ctrl.status) { return; }\n  $ctrl.loadError = (err && err.message) || 'Unable to load pets. Please try again.';\n  $ctrl.allPets = [];\n  $ctrl.searchIndex = [];\n  $ctrl.applyFilters();\n}).finally(() => {\n  if (token === $ctrl.requestToken && status === $ctrl.status) { $ctrl.isLoading = false; }\n});",
+      "description": "Loads real normalized data via the confirmed service, handles rejection, ignores stale selections, and keeps promise updates within Angular's $q digest. Clears page-only snapshots before any request; preserves shared service cache.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "loadPets",
+      "parameters": [
+        "force"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "if ($ctrl.requestedStatus === $ctrl.status) { return; }\n$ctrl.category = '*';\n$ctrl.currentPage = 1;\nreturn $ctrl.loadPets(false);",
+      "description": "Initial load and server reload on status changes, explicitly called by statusChanged as well as supplementary watches. requestedStatus is assigned synchronously in loadPets, so repeated initialization/callback/watch triggers for the same status do not issue duplicate requests. Category resets because its options belong to a different dataset.",
+      "invokeOnLoad": true,
+      "isAsync": false,
+      "name": "syncStatus",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": [
+        "$ctrl.status"
+      ]
+    },
+    {
+      "body": "if ($ctrl.isLoading) { return; }\nreturn $ctrl.loadPets(true);",
+      "description": "Force reloads only the selected list and never clears the shared service cache. Also used by pw-feedback's no-argument retry callback.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "refresh",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "$ctrl.searchQuery = '';\n$ctrl.category = '*';\n$ctrl.sortOrder = 'asc';\n$ctrl.currentPage = 1;\nif ($ctrl.status !== 'available') {\n  $ctrl.status = 'available';\n  return $ctrl.syncStatus();\n}\n$ctrl.applyFilters();",
+      "description": "Clears search/category/sort, restores available status, resets page, and reloads only if status changes. Safe while a prior status request is pending.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "clearFilters",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    }
+  ]
+}

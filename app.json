@@ -1,0 +1,164 @@
+{
+  "config": {
+    "config": {
+      "parameters": [],
+      "script": ""
+    },
+    "properties": {
+      "description": "## Overview\nRead-only public pets and geography workspace; authentication is intentionally disabled.\n\n## Pages\n- `workspace`: persistent shell at `/app`.\n- `/app/home` (`workspace.home`): dashboard.\n- `/app/pets`: searchable, status-filtered, paginated catalogue.\n- `/app/pets/:id`: direct-link pet detail.\n- `/app/countries`: searchable, paginated continent explorer with inline country details.\n\n## Architecture\nCore Navigation, Link, Button, Badge, Input (Text Input), Select (Dropdown) and Pagination where available; Bellini Box/Grid layouts. Reusable `pw-stat-card`, `pw-pet-card`, `pw-country-card` and `pw-feedback`. Singleton `petData` normalizes and caches read-only Petstore requests with independent error states, request deduplication and race guards. `countryData` normalizes geography with a ten-minute cache and shared requests; GraphQL uses builtin `$http` transport because the imported schema lacks an injectable API ID.\n\n## Integrations\n- Swagger Petstore v2: https://petstore.swagger.io/v2\n- Countries GraphQL: https://countries.trevorblades.com/ (imported schema exists).\n\n## Limitations\nPublic demo backends may change; Petstore data is shared and mutable. No authentication, SLA, adoption eligibility verification or commerce. Production launch requires a controlled, secured backend, monitoring and real deployment testing.",
+      "title": "PetWorld — Pets & Places",
+      "version": "1.0.0"
+    },
+    "themes": [
+      {
+        "active": true,
+        "customThemeVariables": [],
+        "mobileProperties": {},
+        "mode": "light",
+        "name": "PetWorld",
+        "properties": {
+          "bln-app-bg-color": "#f8fafc",
+          "bln-app-font-family": "ui-sans-serif, system-ui, sans-serif",
+          "bln-app-font-size": "1rem",
+          "bln-app-font-weight": "400",
+          "bln-app-text-color": "#475569",
+          "bln-button-default-active-bg-color": "#e2e8f0",
+          "bln-button-default-active-text-color": "#1e293b",
+          "bln-button-default-bg-color": "#ffffff",
+          "bln-button-default-border-color": "#64748b",
+          "bln-button-default-hovered-bg-color": "#f1f5f9",
+          "bln-button-default-hovered-text-color": "#1e293b",
+          "bln-button-default-icon-color": "#334155",
+          "bln-button-default-text-color": "#334155",
+          "bln-button-font-weight": "500",
+          "bln-button-min-height": "2.75rem",
+          "bln-button-primary-active-bg-color": "#134e4a",
+          "bln-button-primary-active-text-color": "#ffffff",
+          "bln-button-primary-bg-color": "#0f766e",
+          "bln-button-primary-hovered-bg-color": "#115e59",
+          "bln-button-primary-hovered-text-color": "#ffffff",
+          "bln-button-primary-icon-color": "#ffffff",
+          "bln-button-primary-text-color": "#ffffff",
+          "bln-button-roundness": "0.375rem",
+          "bln-button-secondary-active-bg-color": "#cbd5e1",
+          "bln-button-secondary-active-text-color": "#1e293b",
+          "bln-button-secondary-bg-color": "#f1f5f9",
+          "bln-button-secondary-hovered-bg-color": "#e2e8f0",
+          "bln-button-secondary-hovered-text-color": "#1e293b",
+          "bln-button-secondary-icon-color": "#334155",
+          "bln-button-secondary-text-color": "#334155",
+          "bln-core-components-default-color": "#ffffff",
+          "bln-core-components-default-text-color": "#334155",
+          "bln-core-components-error-color": "#b91c1c",
+          "bln-core-components-error-text-color": "#ffffff",
+          "bln-core-components-font-family": "ui-sans-serif, system-ui, sans-serif",
+          "bln-core-components-font-size": "1rem",
+          "bln-core-components-font-weight": "400",
+          "bln-core-components-primary-color": "#0f766e",
+          "bln-core-components-primary-text-color": "#ffffff",
+          "bln-core-components-secondary-color": "#f1f5f9",
+          "bln-core-components-secondary-text-color": "#334155",
+          "bln-dropdown-bg-color": "#ffffff",
+          "bln-dropdown-border-color": "#64748b",
+          "bln-dropdown-border-radius": "0.375rem",
+          "bln-dropdown-border-style": "solid",
+          "bln-dropdown-border-width": "1px",
+          "bln-dropdown-highlight-color": "#0f766e",
+          "bln-dropdown-label-color": "#334155",
+          "bln-dropdown-list-bg-color": "#ffffff",
+          "bln-dropdown-list-highlighted-item-bg-color": "#f0fdfa",
+          "bln-dropdown-list-highlighted-item-text-color": "#134e4a",
+          "bln-dropdown-list-selected-item-bg-color": "#0f766e",
+          "bln-dropdown-list-selected-item-text-color": "#ffffff",
+          "bln-dropdown-list-text-color": "#334155",
+          "bln-dropdown-text-color": "#1e293b",
+          "bln-link-font-weight": "500",
+          "bln-link-icon-color": "#0f766e",
+          "bln-link-text-color": "#0f766e",
+          "bln-navigation-active-item-bg-color": "#0f766e",
+          "bln-navigation-active-item-text-color": "#ffffff",
+          "bln-navigation-bg-color": "#0f172a",
+          "bln-navigation-border-color": "#334155",
+          "bln-navigation-border-style": "solid",
+          "bln-navigation-border-width": "1px",
+          "bln-navigation-brand-font-weight": "600",
+          "bln-navigation-brand-text-color": "#ffffff",
+          "bln-navigation-font-weight": "500",
+          "bln-navigation-hovered-item-bg-color": "#1e293b",
+          "bln-navigation-hovered-item-text-color": "#ffffff",
+          "bln-navigation-icon-color": "#e2e8f0",
+          "bln-navigation-items-border-radius": "0.375rem",
+          "bln-navigation-text-color": "#e2e8f0",
+          "bln-pagination-active-bg-color": "#0f766e",
+          "bln-pagination-active-text-color": "#ffffff",
+          "bln-pagination-bg-color": "#ffffff",
+          "bln-pagination-hovered-bg-color": "#f0fdfa",
+          "bln-pagination-hovered-text-color": "#134e4a",
+          "bln-pagination-text-color": "#334155",
+          "bln-text-input-bg-color": "#ffffff",
+          "bln-text-input-border-color": "#64748b",
+          "bln-text-input-border-radius": "0.375rem",
+          "bln-text-input-border-style": "solid",
+          "bln-text-input-border-width": "1px",
+          "bln-text-input-focused-highlight-color": "#0f766e",
+          "bln-text-input-label-color": "#334155",
+          "bln-text-input-text-color": "#1e293b"
+        }
+      }
+    ]
+  },
+  "defaultPage": "workspace",
+  "directories": {
+    "assets": [
+      {
+        "id": "SQC8y1Eu5LOiExnVrLbNz",
+        "name": "dir"
+      }
+    ],
+    "components": [
+      {
+        "id": "1RSij9cMFCODWz_5L05S6",
+        "name": "dir"
+      }
+    ],
+    "pages": [
+      {
+        "id": "4vZPBdU8jswo2FKEqExP6",
+        "name": "aa"
+      }
+    ],
+    "scripts": [
+      {
+        "id": "wTB70amXF33Gi5qN_H4NG",
+        "name": "dir"
+      }
+    ],
+    "services": [],
+    "stylesheets": [
+      {
+        "id": "0pmmBs3uSiMbyY8iraSvY",
+        "name": "dir"
+      }
+    ]
+  },
+  "localScripts": [
+    {
+      "parentDirectoryId": "wTB70amXF33Gi5qN_H4NG",
+      "path": "dir/a.js"
+    },
+    {
+      "path": "index.js"
+    }
+  ],
+  "localStylesheets": [
+    {
+      "parentDirectoryId": "0pmmBs3uSiMbyY8iraSvY",
+      "path": "dir/a.css"
+    },
+    {
+      "path": "index.css"
+    }
+  ],
+  "name": "petworld-gh-3729",
+  "type": "app"
+}

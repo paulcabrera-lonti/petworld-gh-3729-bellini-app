@@ -1,0 +1,20 @@
+{
+  "bindings": [],
+  "children": [
+    {
+      "children": [],
+      "classList": [],
+      "name": "img",
+      "source": {
+        "evaluate": false,
+        "url": "assets/apps/petworld-gh-3729/components/c1/filter-circle-xmark-solid-full.svg"
+      }
+    }
+  ],
+  "modules": [],
+  "name": "c1",
+  "parentDirectoryId": "1RSij9cMFCODWz_5L05S6",
+  "styles": [],
+  "type": "custom-component",
+  "variables": []
+}

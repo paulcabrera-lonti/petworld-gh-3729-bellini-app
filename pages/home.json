@@ -1,0 +1,1517 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "OVERVIEW"
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-xs",
+                    "font-semibold",
+                    "tracking-[0.2em]",
+                    "text-teal-700"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "p"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "A little closer to your next companion."
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "max-w-2xl",
+                    "text-3xl",
+                    "md:text-4xl",
+                    "font-semibold",
+                    "tracking-tight",
+                    "leading-tight",
+                    "text-slate-950"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "h1"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "A fresh perspective on the Petstore catalogue and the world beyond it. Your next discovery starts here."
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "max-w-2xl",
+                    "text-sm",
+                    "leading-6",
+                    "text-slate-500"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "p"
+                }
+              ],
+              "classList": [],
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "stretch",
+                  "gap": "10px",
+                  "mainAxisAlignment": "flex-start",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "div"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "children": [],
+              "classList": [
+                "rounded-md",
+                "focus-within:ring-2",
+                "focus-within:ring-teal-700",
+                "focus-within:ring-offset-4"
+              ],
+              "expressions": [
+                {
+                  "expression": "$ctrl.isBusy() ? 'Refreshing…' : 'Refresh overview'",
+                  "to": "label"
+                },
+                {
+                  "expression": "'secondary'",
+                  "to": "type"
+                },
+                {
+                  "expression": "$ctrl.isBusy()",
+                  "to": "isDisabled"
+                },
+                {
+                  "expression": "$ctrl.isBusy()",
+                  "to": "showLoading"
+                },
+                {
+                  "expression": "'Refresh inventory, featured pets and countries independently'",
+                  "to": "tooltip"
+                },
+                {
+                  "expression": "$ctrl.loadDashboard(true)",
+                  "to": "onClick"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "columnAxisAlignment": "end",
+                  "type": "grid-item"
+                }
+              },
+              "name": "Button",
+              "nodeName": "bln-button",
+              "type": "core-component"
+            }
+          ],
+          "classList": [
+            "min-w-0",
+            "[--heading-columns:1]",
+            "sm:[--heading-columns:minmax(0,1fr)_auto]"
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "columnAxisAlignment": "stretch",
+              "columnGap": "20px",
+              "columns": [
+                {
+                  "type": "other",
+                  "value": "var(--heading-columns)"
+                }
+              ],
+              "rowAxisAlignment": "start",
+              "rowGap": "16px",
+              "rows": [
+                {
+                  "type": "other",
+                  "value": "auto"
+                }
+              ],
+              "type": "grid"
+            }
+          },
+          "name": "div"
+        },
+        {
+          "attributes": [
+            {
+              "property": "aria-labelledby",
+              "value": "pw-home-hero"
+            }
+          ],
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "Curiosity looks good on you"
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-xs",
+                    "uppercase",
+                    "tracking-widest",
+                    "font-medium",
+                    "text-teal-300"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "p"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "Big discoveries. Small paws."
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "max-w-lg",
+                    "text-3xl",
+                    "md:text-4xl",
+                    "font-semibold",
+                    "tracking-tight",
+                    "leading-tight",
+                    "text-white"
+                  ],
+                  "elementId": "pw-home-hero",
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "h2"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "Meet the characters in a shared pet catalogue, then follow your curiosity across the country directory. Two public datasets. Plenty to explore."
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "max-w-lg",
+                    "text-sm",
+                    "leading-7",
+                    "text-slate-300"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "p"
+                },
+                {
+                  "children": [
+                    {
+                      "attributes": [
+                        {
+                          "property": "core",
+                          "value": ""
+                        }
+                      ],
+                      "children": [],
+                      "classList": [
+                        "text-teal-200",
+                        "font-medium",
+                        "[&_a]:text-teal-200",
+                        "[&_a]:underline",
+                        "[&_a]:underline-offset-4",
+                        "[&_a:focus-visible]:outline",
+                        "[&_a:focus-visible]:outline-2",
+                        "[&_a:focus-visible]:outline-offset-4",
+                        "[&_a:focus-visible]:outline-teal-200"
+                      ],
+                      "expressions": [
+                        {
+                          "expression": "'Explore pets'",
+                          "to": "text"
+                        },
+                        {
+                          "expression": "$ctrl.destinationLink('pets')",
+                          "to": "link"
+                        },
+                        {
+                          "expression": "'current_window'",
+                          "to": "openIn"
+                        },
+                        {
+                          "expression": "'Explore the Petstore demo catalogue'",
+                          "to": "tooltip"
+                        }
+                      ],
+                      "layout": {
+                        "cell": {
+                          "type": "grid-item"
+                        }
+                      },
+                      "name": "Link",
+                      "nodeName": "bln-link",
+                      "type": "core-component"
+                    },
+                    {
+                      "attributes": [
+                        {
+                          "property": "core",
+                          "value": ""
+                        }
+                      ],
+                      "children": [],
+                      "classList": [
+                        "text-white",
+                        "[&_a]:text-white",
+                        "[&_a]:underline",
+                        "[&_a]:underline-offset-4",
+                        "[&_a:focus-visible]:outline",
+                        "[&_a:focus-visible]:outline-2",
+                        "[&_a:focus-visible]:outline-offset-4",
+                        "[&_a:focus-visible]:outline-teal-200"
+                      ],
+                      "expressions": [
+                        {
+                          "expression": "'Discover countries'",
+                          "to": "text"
+                        },
+                        {
+                          "expression": "$ctrl.destinationLink('countries')",
+                          "to": "link"
+                        },
+                        {
+                          "expression": "'current_window'",
+                          "to": "openIn"
+                        },
+                        {
+                          "expression": "'Explore the country directory'",
+                          "to": "tooltip"
+                        }
+                      ],
+                      "layout": {
+                        "cell": {
+                          "type": "grid-item"
+                        }
+                      },
+                      "name": "Link",
+                      "nodeName": "bln-link",
+                      "type": "core-component"
+                    }
+                  ],
+                  "classList": [
+                    "w-full",
+                    "max-w-sm",
+                    "pt-2"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    },
+                    "container": {
+                      "columnGap": "20px",
+                      "columns": [
+                        {
+                          "type": "other",
+                          "value": "repeat(auto-fit, minmax(140px, 1fr))"
+                        }
+                      ],
+                      "rowGap": "12px",
+                      "rows": [
+                        {
+                          "type": "other",
+                          "value": "auto"
+                        }
+                      ],
+                      "type": "grid"
+                    }
+                  },
+                  "name": "div"
+                }
+              ],
+              "classList": [
+                "min-w-0"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "flex-start",
+                  "gap": "18px",
+                  "mainAxisAlignment": "flex-start",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "div"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "aria-hidden",
+                  "value": "true"
+                }
+              ],
+              "children": [
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "[&_i]:text-6xl",
+                    "[&_svg]:text-6xl",
+                    "[&_i]:text-teal-200",
+                    "[&_svg]:text-teal-200"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "''",
+                      "to": "text"
+                    },
+                    {
+                      "expression": "'outline'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "'default'",
+                      "to": "colorScheme"
+                    },
+                    {
+                      "expression": "{type: 'font-icon', style: 'solid', name: 'paw', position: 'icon-only'}",
+                      "to": "icon"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Badge",
+                  "nodeName": "bln-badge",
+                  "type": "core-component"
+                },
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "[&_i]:text-3xl",
+                    "[&_svg]:text-3xl",
+                    "[&_i]:text-teal-400",
+                    "[&_svg]:text-teal-400"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "''",
+                      "to": "text"
+                    },
+                    {
+                      "expression": "'outline'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "'default'",
+                      "to": "colorScheme"
+                    },
+                    {
+                      "expression": "{type: 'font-icon', style: 'solid', name: 'globe', position: 'icon-only'}",
+                      "to": "icon"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Badge",
+                  "nodeName": "bln-badge",
+                  "type": "core-component"
+                }
+              ],
+              "classList": [
+                "rounded-2xl",
+                "bg-teal-950",
+                "border",
+                "border-teal-800",
+                "p-6",
+                "sm:p-8"
+              ],
+              "layout": {
+                "cell": {
+                  "columnAxisAlignment": "center",
+                  "type": "grid-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "center",
+                  "gap": "24px",
+                  "mainAxisAlignment": "center",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "div"
+            }
+          ],
+          "classList": [
+            "rounded-2xl",
+            "bg-slate-950",
+            "border",
+            "border-slate-800",
+            "p-6",
+            "md:p-9",
+            "overflow-hidden",
+            "text-white",
+            "[--hero-columns:1]",
+            "sm:[--hero-columns:minmax(0,1fr)_auto]"
+          ],
+          "comments": "Navy hero with teal accents and decorative icons from the core Badge renderer, never external photos. These are inline content calls to action, not a second navigation shell.",
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "columnAxisAlignment": "stretch",
+              "columnGap": "28px",
+              "columns": [
+                {
+                  "type": "other",
+                  "value": "var(--hero-columns)"
+                }
+              ],
+              "rowAxisAlignment": "center",
+              "rowGap": "24px",
+              "rows": [
+                {
+                  "type": "other",
+                  "value": "auto"
+                }
+              ],
+              "type": "grid"
+            }
+          },
+          "name": "section"
+        },
+        {
+          "attributes": [
+            {
+              "property": "aria-labelledby",
+              "value": "pw-home-snapshot"
+            }
+          ],
+          "children": [
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "The bigger picture"
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-lg",
+                "font-semibold",
+                "tracking-tight"
+              ],
+              "elementId": "pw-home-snapshot",
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "h2"
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "classList": [],
+                  "expressions": [
+                    {
+                      "expression": "metric.label",
+                      "to": "label"
+                    },
+                    {
+                      "expression": "$ctrl.metricValue(metric.key)",
+                      "to": "value"
+                    },
+                    {
+                      "expression": "$ctrl.metricHint(metric.key)",
+                      "to": "hint"
+                    }
+                  ],
+                  "iterate": {
+                    "array": "$ctrl.metrics",
+                    "variable": "metric"
+                  },
+                  "layout": {
+                    "cell": {
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "pw-stat-card",
+                  "ownerId": "6afa9b10de45780c01651671",
+                  "ownerType": "app",
+                  "resourceIdentity": "components/pw-stat-card",
+                  "type": "custom-component"
+                }
+              ],
+              "classList": [
+                "[--metric-columns:1]",
+                "sm:[--metric-columns:2]",
+                "xl:[--metric-columns:4]"
+              ],
+              "comments": "Grid metadata owns tracks. Responsive custom-property values select exactly 1/2/4 columns without overriding Grid with CSS display utilities.",
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                },
+                "container": {
+                  "columnAxisAlignment": "stretch",
+                  "columnGap": "16px",
+                  "columns": [
+                    {
+                      "type": "other",
+                      "value": "repeat(var(--metric-columns), minmax(0, 1fr))"
+                    }
+                  ],
+                  "rowAxisAlignment": "stretch",
+                  "rowGap": "16px",
+                  "rows": [
+                    {
+                      "type": "other",
+                      "value": "auto"
+                    }
+                  ],
+                  "type": "grid"
+                }
+              },
+              "name": "div"
+            },
+            {
+              "children": [],
+              "classList": [],
+              "displayExpression": "$ctrl.resources.inventory.loading || $ctrl.resources.inventory.error || $ctrl.inventoryEmpty()",
+              "expressions": [
+                {
+                  "expression": "$ctrl.resources.inventory.loading ? 'loading' : ($ctrl.resources.inventory.error ? 'error' : 'empty')",
+                  "to": "kind"
+                },
+                {
+                  "expression": "$ctrl.resources.inventory.loading ? 'Loading inventory' : ($ctrl.resources.inventory.error ? 'Inventory is unavailable' : 'No status counts reported')",
+                  "to": "title"
+                },
+                {
+                  "expression": "$ctrl.resources.inventory.error || ($ctrl.resources.inventory.loading ? 'Fetching the independent Petstore inventory snapshot.' : 'The demo API did not report available, pending or sold counts. Missing values remain unknown, not zero.')",
+                  "to": "message"
+                },
+                {
+                  "expression": "'Retry inventory'",
+                  "to": "retryLabel"
+                },
+                {
+                  "expression": "$ctrl.loadResource('inventory', true)",
+                  "to": "onRetry"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "pw-feedback",
+              "ownerId": "6afa9b10de45780c01651671",
+              "ownerType": "app",
+              "resourceIdentity": "components/pw-feedback",
+              "type": "custom-component"
+            },
+            {
+              "children": [
+                {
+                  "evaluate": false,
+                  "name": "text",
+                  "textContent": "Inventory is a separate demo snapshot and may differ from the catalogue. Status labels are supplied by Petstore, not adoption or purchase guarantees."
+                }
+              ],
+              "classList": [
+                "m-0",
+                "text-xs",
+                "leading-5",
+                "text-slate-500"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "p"
+            }
+          ],
+          "classList": [],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "stretch",
+              "gap": "16px",
+              "mainAxisAlignment": "flex-start",
+              "orientation": "column",
+              "type": "box"
+            }
+          },
+          "name": "section"
+        },
+        {
+          "attributes": [
+            {
+              "property": "aria-labelledby",
+              "value": "pw-home-featured"
+            }
+          ],
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "A few friendly introductions"
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "text-xl",
+                        "font-semibold",
+                        "tracking-tight"
+                      ],
+                      "elementId": "pw-home-featured",
+                      "layout": {
+                        "cell": {
+                          "type": "box-item"
+                        }
+                      },
+                      "name": "h2"
+                    },
+                    {
+                      "children": [
+                        {
+                          "evaluate": false,
+                          "name": "text",
+                          "textContent": "Up to three available pets from the public demo catalogue."
+                        }
+                      ],
+                      "classList": [
+                        "m-0",
+                        "text-sm",
+                        "text-slate-500"
+                      ],
+                      "layout": {
+                        "cell": {
+                          "type": "box-item"
+                        }
+                      },
+                      "name": "p"
+                    }
+                  ],
+                  "classList": [],
+                  "layout": {
+                    "cell": {
+                      "type": "grid-item"
+                    },
+                    "container": {
+                      "crossAxisAlignment": "stretch",
+                      "gap": "6px",
+                      "orientation": "column",
+                      "type": "box"
+                    }
+                  },
+                  "name": "div"
+                },
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [
+                    "text-sm",
+                    "font-medium",
+                    "[&_a]:text-teal-800",
+                    "[&_a]:underline",
+                    "[&_a]:underline-offset-4",
+                    "[&_a:focus-visible]:outline",
+                    "[&_a:focus-visible]:outline-2",
+                    "[&_a:focus-visible]:outline-offset-4",
+                    "[&_a:focus-visible]:outline-teal-700"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "'Browse all pets'",
+                      "to": "text"
+                    },
+                    {
+                      "expression": "$ctrl.destinationLink('pets')",
+                      "to": "link"
+                    },
+                    {
+                      "expression": "'current_window'",
+                      "to": "openIn"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "Link",
+                  "nodeName": "bln-link",
+                  "type": "core-component"
+                }
+              ],
+              "classList": [
+                "[--section-columns:1]",
+                "sm:[--section-columns:minmax(0,1fr)_auto]"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                },
+                "container": {
+                  "columnGap": "16px",
+                  "columns": [
+                    {
+                      "type": "other",
+                      "value": "var(--section-columns)"
+                    }
+                  ],
+                  "rowAxisAlignment": "center",
+                  "rowGap": "12px",
+                  "rows": [
+                    {
+                      "type": "other",
+                      "value": "auto"
+                    }
+                  ],
+                  "type": "grid"
+                }
+              },
+              "name": "div"
+            },
+            {
+              "children": [],
+              "classList": [],
+              "displayExpression": "$ctrl.resources.pets.loading || $ctrl.resources.pets.error || !$ctrl.featuredPets.length",
+              "expressions": [
+                {
+                  "expression": "$ctrl.resources.pets.loading ? 'loading' : ($ctrl.resources.pets.error ? 'error' : 'empty')",
+                  "to": "kind"
+                },
+                {
+                  "expression": "$ctrl.resources.pets.loading ? 'Finding friendly faces' : ($ctrl.resources.pets.error ? 'Featured pets are unavailable' : 'No available pets to feature')",
+                  "to": "title"
+                },
+                {
+                  "expression": "$ctrl.resources.pets.error || ($ctrl.resources.pets.loading ? 'Loading available pets from the Petstore demo.' : 'The current dataset has no available pets to show. Browse the catalogue or refresh later; shared demo records can change.')",
+                  "to": "message"
+                },
+                {
+                  "expression": "'Retry featured pets'",
+                  "to": "retryLabel"
+                },
+                {
+                  "expression": "$ctrl.loadResource('pets', true)",
+                  "to": "onRetry"
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "name": "pw-feedback",
+              "ownerId": "6afa9b10de45780c01651671",
+              "ownerType": "app",
+              "resourceIdentity": "components/pw-feedback",
+              "type": "custom-component"
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "classList": [
+                    "min-w-0"
+                  ],
+                  "expressions": [
+                    {
+                      "expression": "pet",
+                      "to": "pet"
+                    },
+                    {
+                      "expression": "true",
+                      "to": "compact"
+                    }
+                  ],
+                  "iterate": {
+                    "array": "$ctrl.featuredPets",
+                    "variable": "pet"
+                  },
+                  "layout": {
+                    "cell": {
+                      "type": "grid-item"
+                    }
+                  },
+                  "name": "pw-pet-card",
+                  "ownerId": "6afa9b10de45780c01651671",
+                  "ownerType": "app",
+                  "resourceIdentity": "components/pw-pet-card",
+                  "type": "custom-component"
+                }
+              ],
+              "classList": [
+                "[--pet-columns:1]",
+                "lg:[--pet-columns:3]"
+              ],
+              "displayExpression": "!$ctrl.resources.pets.loading && !$ctrl.resources.pets.error && $ctrl.featuredPets.length",
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                },
+                "container": {
+                  "columnAxisAlignment": "stretch",
+                  "columnGap": "18px",
+                  "columns": [
+                    {
+                      "type": "other",
+                      "value": "repeat(var(--pet-columns), minmax(0, 1fr))"
+                    }
+                  ],
+                  "rowAxisAlignment": "stretch",
+                  "rowGap": "18px",
+                  "rows": [
+                    {
+                      "type": "other",
+                      "value": "auto"
+                    }
+                  ],
+                  "type": "grid"
+                }
+              },
+              "name": "div"
+            }
+          ],
+          "classList": [],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "crossAxisAlignment": "stretch",
+              "gap": "18px",
+              "mainAxisAlignment": "flex-start",
+              "orientation": "column",
+              "type": "box"
+            }
+          },
+          "name": "section"
+        },
+        {
+          "children": [
+            {
+              "attributes": [
+                {
+                  "property": "aria-labelledby",
+                  "value": "pw-home-store"
+                }
+              ],
+              "children": [
+                {
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "children": [],
+                  "classList": [],
+                  "expressions": [
+                    {
+                      "expression": "'Read-only demo'",
+                      "to": "text"
+                    },
+                    {
+                      "expression": "'outline'",
+                      "to": "type"
+                    },
+                    {
+                      "expression": "'default'",
+                      "to": "colorScheme"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "Badge",
+                  "nodeName": "bln-badge",
+                  "type": "core-component"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "Meet the Petstore"
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-lg",
+                    "font-semibold",
+                    "tracking-tight"
+                  ],
+                  "elementId": "pw-home-store",
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "h2"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "A small window into a shared public API. Explore names, categories and status labels without changing any records. This is demo data, not a real store or an adoption service."
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-sm",
+                    "leading-6",
+                    "text-slate-600"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "p"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "Other demo users can update or remove records at any time. Refresh for a new snapshot."
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-xs",
+                    "leading-5",
+                    "text-slate-500"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "p"
+                }
+              ],
+              "classList": [
+                "rounded-xl",
+                "border",
+                "border-slate-200",
+                "bg-white",
+                "p-6"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "flex-start",
+                  "gap": "14px",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "section"
+            },
+            {
+              "attributes": [
+                {
+                  "property": "aria-labelledby",
+                  "value": "pw-home-world"
+                }
+              ],
+              "children": [
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "A wider perspective"
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-xs",
+                    "font-medium",
+                    "uppercase",
+                    "tracking-widest",
+                    "text-teal-800"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "p"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": false,
+                      "name": "text",
+                      "textContent": "Explore the world"
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-lg",
+                    "font-semibold",
+                    "tracking-tight"
+                  ],
+                  "elementId": "pw-home-world",
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "h2"
+                },
+                {
+                  "children": [
+                    {
+                      "evaluate": true,
+                      "name": "text",
+                      "textContent": "$ctrl.worldSummary()"
+                    }
+                  ],
+                  "classList": [
+                    "m-0",
+                    "text-sm",
+                    "leading-6",
+                    "text-slate-700"
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "p"
+                },
+                {
+                  "children": [],
+                  "classList": [],
+                  "displayExpression": "$ctrl.resources.countries.loading || $ctrl.resources.countries.error || ($ctrl.resources.countries.value && !$ctrl.resources.countries.value.length)",
+                  "expressions": [
+                    {
+                      "expression": "$ctrl.resources.countries.loading ? 'loading' : ($ctrl.resources.countries.error ? 'error' : 'empty')",
+                      "to": "kind"
+                    },
+                    {
+                      "expression": "$ctrl.resources.countries.loading ? 'Loading the country directory' : ($ctrl.resources.countries.error ? 'Countries are unavailable' : 'The country directory is empty')",
+                      "to": "title"
+                    },
+                    {
+                      "expression": "$ctrl.resources.countries.error || ($ctrl.resources.countries.loading ? 'Counting countries and their unique continents from the real dataset.' : 'The service returned no countries. Refresh later to check for new records.')",
+                      "to": "message"
+                    },
+                    {
+                      "expression": "'Retry countries'",
+                      "to": "retryLabel"
+                    },
+                    {
+                      "expression": "$ctrl.loadResource('countries', true)",
+                      "to": "onRetry"
+                    }
+                  ],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "name": "pw-feedback",
+                  "ownerId": "6afa9b10de45780c01651671",
+                  "ownerType": "app",
+                  "resourceIdentity": "components/pw-feedback",
+                  "type": "custom-component"
+                }
+              ],
+              "classList": [
+                "rounded-xl",
+                "border",
+                "border-teal-200",
+                "bg-teal-50",
+                "p-6",
+                "min-w-0"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "grid-item"
+                },
+                "container": {
+                  "crossAxisAlignment": "stretch",
+                  "gap": "14px",
+                  "orientation": "column",
+                  "type": "box"
+                }
+              },
+              "name": "section"
+            }
+          ],
+          "classList": [
+            "[--editorial-columns:1]",
+            "lg:[--editorial-columns:2]"
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            },
+            "container": {
+              "columnAxisAlignment": "stretch",
+              "columnGap": "20px",
+              "columns": [
+                {
+                  "type": "other",
+                  "value": "repeat(var(--editorial-columns), minmax(0, 1fr))"
+                }
+              ],
+              "rowAxisAlignment": "stretch",
+              "rowGap": "20px",
+              "rows": [
+                {
+                  "type": "other",
+                  "value": "auto"
+                }
+              ],
+              "type": "grid"
+            }
+          },
+          "name": "div"
+        },
+        {
+          "attributes": [
+            {
+              "property": "role",
+              "value": "status"
+            },
+            {
+              "property": "aria-live",
+              "value": "polite"
+            }
+          ],
+          "children": [
+            {
+              "evaluate": true,
+              "name": "text",
+              "textContent": "$ctrl.lastSuccessfulRefresh ? 'Last successful full refresh: ' + ($ctrl.lastSuccessfulRefresh | date:'medium') + '. Individual sections may have been retried since.' : 'Initial loads may use service caches. Refresh overview requests new snapshots; a complete successful refresh will be timestamped here.'"
+            }
+          ],
+          "classList": [
+            "m-0",
+            "border-t",
+            "border-slate-200",
+            "pt-5",
+            "text-xs",
+            "leading-5",
+            "text-slate-500"
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item"
+            }
+          },
+          "name": "p"
+        }
+      ],
+      "classList": [
+        "min-w-0",
+        "w-full",
+        "text-slate-900"
+      ],
+      "comments": "Dashboard content only. Parent workspace owns the main landmark, navigation and route outlet.",
+      "layout": {
+        "container": {
+          "crossAxisAlignment": "stretch",
+          "gap": "28px",
+          "mainAxisAlignment": "flex-start",
+          "orientation": "column",
+          "type": "box"
+        }
+      },
+      "name": "div"
+    }
+  ],
+  "description": "## PetWorld overview\nDashboard child `workspace.home` at `/app/home`, rendered in the confirmed workspace outlet; navigation, main landmark and shell remain parent-owned.\n\nUses verified `petData` and `countryData` app services by opaque ID, with no page-level HTTP. Inventory, available pets and countries load concurrently through independently caught Angular promises. Each resource has its own loading/error/empty/retry state; failed or pending metrics display an em dash, never a fabricated zero. Inventory counts are independent server reports, not list totals. Featured cards show at most three actual records explicitly marked available. Country and unique continent counts derive from the successful normalized country dataset.\n\nRefresh bypasses service caches and is disabled while any page request runs. Initial loads may use service caches. A last successful full refresh timestamp is recorded only after all three forced requests succeed; partial failures do not advance it. Individual retries do not reset other sections.\n\nReuses app-owned pw-stat-card, pw-pet-card and pw-feedback. Built-in Grid tracks use responsive CSS custom-property values for exact 1/2/4 metrics, 1/3 pets and 1/2 editorial panels; Box/Grid metadata owns structure. Core Badge supplies decorative paw/globe icons; no images, invented store locations or adoption claims.\n\nThe parent is confirmed. Destination child files were not available at creation: content links select exact workspace.pets/workspace.countries states when registered, otherwise use the parent shell's agreed #!/app/pets and #!/app/countries paths. The reused pet card owns its workspace.pet-detail link contract; that child must be registered by the app. No duplicate navigation is created.",
+  "name": "home",
+  "params": {},
+  "parentPageName": "workspace",
+  "type": "page",
+  "url": "/home",
+  "variables": [
+    {
+      "id": "service",
+      "name": "petData",
+      "resourceIdentity": "services/pet-data",
+      "type": "service"
+    },
+    {
+      "id": "service",
+      "name": "countryData",
+      "resourceIdentity": "services/country-data",
+      "type": "service"
+    },
+    {
+      "name": "$q",
+      "type": "service"
+    },
+    {
+      "name": "$state",
+      "type": "service"
+    },
+    {
+      "description": "Page-local resource snapshots and independent request flags; service public state is never mutated.",
+      "name": "resources",
+      "type": "property",
+      "value": "{inventory: {loading: false, error: null, value: null}, pets: {loading: false, error: null, value: null}, countries: {loading: false, error: null, value: null}}"
+    },
+    {
+      "description": "Up to three normalized, genuinely available pet records from the successful list response.",
+      "name": "featuredPets",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "Unique continent codes counted from successful normalized countries; null means unknown.",
+      "name": "continentCount",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Metric labels only; actual values always come from successful service results.",
+      "name": "metrics",
+      "type": "property",
+      "value": "[{key: 'available', label: 'Available'}, {key: 'pending', label: 'Pending'}, {key: 'sold', label: 'Sold'}, {key: 'countries', label: 'Countries'}]"
+    },
+    {
+      "description": "Epoch time of the last completely successful forced dashboard refresh; never advanced by cache access or partial success.",
+      "name": "lastSuccessfulRefresh",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Guards whole-dashboard refreshes while their independent operations settle.",
+      "name": "refreshing",
+      "type": "property",
+      "value": "false"
+    },
+    {
+      "body": "const state = $ctrl.resources[key];\nif (!state || state.loading) { return $ctrl.$q.when(false); }\nstate.loading = true;\nstate.error = null;\n// Hide prior values during refresh/failure rather than present stale counts as current.\nstate.value = null;\nif (key === 'pets') { $ctrl.featuredPets = []; }\nif (key === 'countries') { $ctrl.continentCount = null; }\nreturn $ctrl.$q.when().then(() => {\n  if (key === 'inventory') { return $ctrl.petData.loadInventory(force === true); }\n  if (key === 'pets') { return $ctrl.petData.loadPets('available', force === true); }\n  return $ctrl.countryData.loadCountries(force === true);\n}).then(value => {\n  state.value = value;\n  if (key === 'pets') {\n    $ctrl.featuredPets = value.filter(pet => pet.status === 'available').slice(0, 3);\n  }\n  if (key === 'countries') {\n    $ctrl.continentCount = new Set(value.map(country => country.continentCode).filter(Boolean)).size;\n  }\n  return true;\n}).catch(err => {\n  state.value = null;\n  state.error = (err && err.message) || 'Unable to load this section. Please retry.';\n  return false;\n}).finally(() => {\n  state.loading = false;\n});",
+      "description": "Loads exactly one resource via its verified service method. Each rejection is caught locally and resolves false so parallel sections continue. Angular promise callbacks keep state digest-safe.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "loadResource",
+      "parameters": [
+        "key",
+        "force"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "return $ctrl.refreshing || Object.keys($ctrl.resources).some(key => $ctrl.resources[key].loading);",
+      "description": "Includes independent retries as well as the full refresh, keeping the top-right action disabled during any request.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "isBusy",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "if ($ctrl.isBusy()) { return $ctrl.$q.when(false); }\n$ctrl.refreshing = true;\nreturn $ctrl.$q.all([\n  $ctrl.loadResource('inventory', force),\n  $ctrl.loadResource('pets', force),\n  $ctrl.loadResource('countries', force)\n]).then(results => {\n  const complete = results.every(Boolean);\n  if (force === true && complete) { $ctrl.lastSuccessfulRefresh = Date.now(); }\n  return complete;\n}).finally(() => {\n  $ctrl.refreshing = false;\n});",
+      "description": "Starts all three resources concurrently; their promises catch errors independently. Only a fully successful forced refresh advances the complete-refresh timestamp.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "loadDashboard",
+      "parameters": [
+        "force"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "return $ctrl.loadDashboard(false);",
+      "description": "Loads through service caches on entry; no shell or duplicate network transport is created.",
+      "invokeOnLoad": true,
+      "isAsync": false,
+      "name": "initializeDashboard",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const state = $ctrl.resources[key === 'countries' ? 'countries' : 'inventory'];\nif (state.loading || state.error || state.value === null) { return '—'; }\nconst value = key === 'countries' ? state.value.length : state.value[key];\nreturn typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 ? value.toLocaleString() : '—';",
+      "description": "Formats only valid reported counts. Unknown, pending, failed and omitted fields remain an em dash; real zero is preserved.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "metricValue",
+      "parameters": [
+        "key"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const state = $ctrl.resources[key === 'countries' ? 'countries' : 'inventory'];\nif (state.loading) { return 'Loading snapshot…'; }\nif (state.error) { return 'Unavailable · retry below'; }\nif (state.value === null) { return 'Not loaded yet'; }\nif (key === 'countries') { return 'From the country directory'; }\nreturn $ctrl.metricValue(key) === '—' ? 'Not reported by the demo API' : 'Reported demo inventory';",
+      "description": "Explains loading, failure, missing inventory fields and successful data provenance without implying live availability.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "metricHint",
+      "parameters": [
+        "key"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const state = $ctrl.resources.inventory;\nreturn !state.loading && !state.error && state.value !== null && ['available', 'pending', 'sold'].every(key => !Object.prototype.hasOwnProperty.call(state.value, key));",
+      "description": "Missing reported status counts are an empty inventory snapshot, not zero inventory.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "inventoryEmpty",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const state = $ctrl.resources.countries;\nif (state.loading || state.error || state.value === null) { return 'Discover country names, capitals, languages and continents in one read-only directory.'; }\nreturn state.value.length.toLocaleString() + ' countries across ' + $ctrl.continentCount.toLocaleString() + ' continents in the current dataset. Explore capitals, languages and more.';",
+      "description": "Editorial count sentence derived solely from successful country records.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "worldSummary",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const state = 'workspace.' + section;\nreturn $ctrl.$state.get(state) ? {type: 'state', state: state, parameters: {}} : {type: 'url', path: '#!/app/' + section, evaluate: false};",
+      "description": "Uses registered nested states verbatim. Until destination children exist, follows the same agreed URL fallback as the confirmed workspace shell.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "destinationLink",
+      "parameters": [
+        "section"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    }
+  ]
+}

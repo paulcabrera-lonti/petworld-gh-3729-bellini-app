@@ -1,0 +1,29 @@
+{
+  "children": [
+    {
+      "children": [],
+      "classList": [],
+      "name": "img",
+      "source": {
+        "evaluate": false,
+        "url": "assets/apps/petworld-gh-3729/hand-solid-full.svg"
+      }
+    },
+    {
+      "children": [],
+      "classList": [],
+      "expressions": [],
+      "name": "c1",
+      "ownerId": "6afa9b10de45780c01651671",
+      "ownerType": "app",
+      "resourceIdentity": "components/dir/c1",
+      "type": "custom-component"
+    }
+  ],
+  "name": "aa",
+  "params": {},
+  "parentDirectoryId": "4vZPBdU8jswo2FKEqExP6",
+  "type": "page",
+  "url": "/aa",
+  "variables": []
+}

@@ -1,0 +1,321 @@
+{
+  "description": "## Pet data (`petData`)\nRead-only wrapper around the public Petstore demo API. Only findPetsByStatus, getPetById and getInventory are called; there are no mutations, sample pets or fabricated inventory counts. Demo records may change, disappear or contain malformed data; inventory is an independent server snapshot, not derived from the list.\n\nPublic methods: `loadPets(status = 'available', force = false)` selects available/pending/sold and resolves a normalized list; `loadInventory(force = false)` resolves reported valid counts; `getPet(id, force = false)` resolves a normalized detail or rejects with code PET_NOT_FOUND/status 404; `clearCache()` invalidates caches and in-flight writes and clears displayed state without cancelling network requests. All loads reject on failure with safe Error objects carrying context/code/status; callers must handle rejections for retry UI. Force bypasses cached values but shares an existing request for the same resource. Status, inventory and detail caches expire after two minutes.\n\nPublic state: pets, currentStatus, loading, error and lastUpdated describe only the selected list; inventory/inventoryLoading/inventoryError describe inventory; detailLoading and detailErrors are maps keyed by String(id). Detail failures never erase pets. lastUpdated is the selected list's successful fetch timestamp (epoch milliseconds), not cache-access time. Older selections and pre-clear responses cannot overwrite current state.\n\nNormalized pets expose only id, name, category, status and string tags. Invalid records/IDs are omitted and duplicate list IDs keep the first record. IDs retain their server string or numeric representation; digit strings are never converted to Number, and routes should use String(pet.id). Precision already lost by a server JSON numeric int64 cannot be recovered. Text is plain, length-bounded and stripped of angle brackets/control characters: render using text bindings, never HTML bindings. photoUrls/assets are deliberately omitted; use local icon placeholders. Public state should be treated as read-only by consumers.",
+  "name": "pet-data",
+  "singleton": true,
+  "type": "app-service",
+  "variables": [
+    {
+      "id": "open-api",
+      "name": "petstoreApi",
+      "resourceIdentity": "apis/petstore-api",
+      "type": "open-api"
+    },
+    {
+      "name": "$q",
+      "type": "service"
+    },
+    {
+      "description": "Normalized pets for currentStatus. Each record has id (original number/string), name, category string, status and string tags; no remote images.",
+      "name": "pets",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "Independent server inventory snapshot containing only valid nonnegative integer counts; null until loaded. Missing counts are not invented.",
+      "name": "inventory",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Whether the currently selected pet-list request is pending; excludes inventory and detail work.",
+      "name": "loading",
+      "type": "property",
+      "value": "false"
+    },
+    {
+      "description": "Safe message for the selected list's most recent failure, or null. Request promises still reject.",
+      "name": "error",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Epoch milliseconds of the selected list's successful network fetch, or null before a successful load.",
+      "name": "lastUpdated",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Selected list status: available, pending or sold.",
+      "name": "currentStatus",
+      "type": "property",
+      "value": "'available'"
+    },
+    {
+      "description": "True only while the inventory request is pending.",
+      "name": "inventoryLoading",
+      "type": "property",
+      "value": "false"
+    },
+    {
+      "description": "Safe inventory-specific failure message, independent of list error.",
+      "name": "inventoryError",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Per-ID pending flags keyed by String(id); absent or false means not loading.",
+      "name": "detailLoading",
+      "type": "property",
+      "value": "{}"
+    },
+    {
+      "description": "Per-ID safe error messages keyed by String(id), or null after a retry/success. A missing pet rejects with PET_NOT_FOUND and HTTP status 404.",
+      "name": "detailErrors",
+      "type": "property",
+      "value": "{}"
+    },
+    {
+      "description": "Private cache lifetime in milliseconds.",
+      "name": "ttl",
+      "type": "property",
+      "value": "120000"
+    },
+    {
+      "name": "generation",
+      "type": "property",
+      "value": "0"
+    },
+    {
+      "name": "selection",
+      "type": "property",
+      "value": "0"
+    },
+    {
+      "name": "statusCache",
+      "type": "property",
+      "value": "{}"
+    },
+    {
+      "name": "detailCache",
+      "type": "property",
+      "value": "{}"
+    },
+    {
+      "name": "inventoryCache",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "name": "statusRequests",
+      "type": "property",
+      "value": "{}"
+    },
+    {
+      "name": "detailRequests",
+      "type": "property",
+      "value": "{}"
+    },
+    {
+      "name": "inventoryRequest",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "body": "if (typeof value !== 'string') {\n  return fallback;\n}\nconst text = value.replace(/[<>\\u0000-\\u001f\\u007f]/g, '').trim().slice(0, 300);\nreturn text || fallback;",
+      "description": "Private plain-text normalization; never evaluates HTML.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "safeText",
+      "parameters": [
+        "value",
+        "fallback"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "if (typeof id === 'string') {\n  return /^-?\\d+$/.test(id) && id.length <= 100;\n}\nreturn typeof id === 'number' && Number.isFinite(id) && Number.isInteger(id);",
+      "description": "Accepts integer numbers or digit strings without numeric conversion, preserving int64 strings.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "validId",
+      "parameters": [
+        "id"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "if (!raw || typeof raw !== 'object' || Array.isArray(raw) || !this.validId(raw.id)) {\n  return null;\n}\nconst tags = [];\nif (Array.isArray(raw.tags)) {\n  raw.tags.forEach(tag => {\n    const value = typeof tag === 'string' ? tag : (tag && typeof tag === 'object' ? tag.name : null);\n    const text = this.safeText(value, '');\n    if (text && tags.indexOf(text) === -1) {\n      tags.push(text);\n    }\n  });\n}\nconst category = typeof raw.category === 'string' ? raw.category : (raw.category && raw.category.name);\nreturn {\n  id: raw.id,\n  name: this.safeText(raw.name, 'Unnamed pet'),\n  category: this.safeText(category, 'Uncategorized'),\n  status: ['available', 'pending', 'sold'].indexOf(raw.status) !== -1 ? raw.status : 'unknown',\n  tags: tags\n};",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "normalizePet",
+      "parameters": [
+        "raw"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "// Malformed top-level payloads are failures, not fabricated empty results.\nif (!Array.isArray(raw)) {\n  throw this.makeError('pets', 'The pet service returned an invalid list.', 'INVALID_RESPONSE', 0);\n}\nconst seen = new Set();\nconst pets = [];\nraw.forEach(item => {\n  const pet = this.normalizePet(item);\n  if (pet && !seen.has(String(pet.id))) {\n    seen.add(String(pet.id));\n    pets.push(pet);\n  }\n});\nreturn pets;",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "normalizePets",
+      "parameters": [
+        "raw"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "if (!raw || typeof raw !== 'object' || Array.isArray(raw)) {\n  throw this.makeError('inventory', 'The pet service returned invalid inventory.', 'INVALID_RESPONSE', 0);\n}\nconst inventory = Object.create(null);\nObject.keys(raw).forEach(key => {\n  const value = raw[key];\n  // Retain reported counts only; do not derive counts or turn missing values into zero.\n  if (key && key.length <= 100 && !/[<>\\u0000-\\u001f\\u007f]/.test(key) && typeof value === 'number' && Number.isSafeInteger(value) && value >= 0) {\n    inventory[key] = value;\n  }\n});\nreturn inventory;",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "normalizeInventory",
+      "parameters": [
+        "raw"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const error = new Error(message);\nerror.context = context;\nerror.code = code;\nerror.status = status;\nreturn error;",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "makeError",
+      "parameters": [
+        "context",
+        "message",
+        "code",
+        "status"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "if (err instanceof Error && err.code === 'INVALID_RESPONSE') {\n  return this.makeError(context, err.message, err.code, err.status);\n}\nconst status = err && typeof err.status === 'number' && Number.isFinite(err.status) ? err.status : 0;\nif (context.indexOf('pet:') === 0 && status === 404) {\n  return this.makeError(context, 'This pet was not found (404). It may have been removed from the public demo.', 'PET_NOT_FOUND', 404);\n}\nlet message = 'Unable to load ' + label + '.';\nif (status <= 0) {\n  message += ' Check your connection and try again.';\n} else if (status === 429) {\n  message += ' The public demo is rate limited; please retry later.';\n} else if (status >= 500) {\n  message += ' The public demo service is temporarily unavailable; please retry.';\n} else {\n  message += ' The service returned HTTP ' + status + '; please retry.';\n}\nreturn this.makeError(context, message, 'REQUEST_FAILED', status);",
+      "description": "Private error mapper: never exposes arbitrary remote error bodies or HTML.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "requestError",
+      "parameters": [
+        "err",
+        "context",
+        "label"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "return !!entry && Date.now() - entry.time >= 0 && Date.now() - entry.time < this.ttl;",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "fresh",
+      "parameters": [
+        "entry"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "status = status === undefined ? 'available' : status;\nif (['available', 'pending', 'sold'].indexOf(status) === -1) {\n  return this.$q.reject(this.makeError('pets', 'Choose available, pending or sold.', 'INVALID_STATUS', 0));\n}\nconst generation = this.generation;\nconst selection = ++this.selection;\nconst changed = this.currentStatus !== status;\nthis.currentStatus = status;\nthis.error = null;\nif (changed) {\n  this.pets = [];\n  this.lastUpdated = null;\n}\nconst cached = this.statusCache[status];\n// Prefer an existing refresh over an older cached value.\nlet request = this.statusRequests[status];\nif (!request && !force && this.fresh(cached)) {\n  this.pets = cached.value;\n  this.lastUpdated = cached.time;\n  this.loading = false;\n  return this.$q.when(cached.value);\n}\nthis.loading = true;\nif (!request) {\n  request = this.$q.when().then(() => this.petstoreApi.findPetsByStatus({ status: [status] })).then(response => {\n    const entry = { value: this.normalizePets(response.data), time: Date.now() };\n    if (this.generation === generation) {\n      this.statusCache[status] = entry;\n    }\n    return entry;\n  }).catch(err => {\n    throw this.requestError(err, 'pets:' + status, status + ' pets');\n  }).finally(() => {\n    if (this.generation === generation && this.statusRequests[status] === request) {\n      delete this.statusRequests[status];\n    }\n  });\n  this.statusRequests[status] = request;\n}\n// Every caller has a selection token, even when sharing the same network request.\nreturn request.then(entry => {\n  if (this.generation === generation && this.selection === selection) {\n    this.pets = entry.value;\n    this.lastUpdated = entry.time;\n  }\n  return entry.value;\n}, err => {\n  if (this.generation === generation && this.selection === selection) {\n    this.error = err.message;\n  }\n  throw err;\n}).finally(() => {\n  if (this.generation === generation && this.selection === selection) {\n    this.loading = false;\n  }\n});",
+      "description": "Selects status (default available) and returns a promise of normalized pets. Separate two-minute status caches, network deduplication and selection tokens prevent stale overwrites. force defaults false and bypasses cache, not in-flight deduplication. Rejects with safe context pets:<status> errors.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "loadPets",
+      "parameters": [
+        "status",
+        "force"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "if (this.inventoryRequest) {\n  return this.inventoryRequest;\n}\nthis.inventoryError = null;\nif (!force && this.fresh(this.inventoryCache)) {\n  this.inventory = this.inventoryCache.value;\n  this.inventoryLoading = false;\n  return this.$q.when(this.inventory);\n}\nconst generation = this.generation;\nthis.inventoryLoading = true;\nconst request = this.$q.when().then(() => this.petstoreApi.getInventory()).then(response => {\n  const value = this.normalizeInventory(response.data);\n  if (this.generation === generation) {\n    this.inventoryCache = { value: value, time: Date.now() };\n    this.inventory = value;\n  }\n  return value;\n}).catch(err => {\n  const error = this.requestError(err, 'inventory', 'inventory');\n  if (this.generation === generation) {\n    this.inventoryError = error.message;\n  }\n  throw error;\n}).finally(() => {\n  if (this.generation === generation && this.inventoryRequest === request) {\n    this.inventoryLoading = false;\n    this.inventoryRequest = null;\n  }\n});\nthis.inventoryRequest = request;\nreturn request;",
+      "description": "Returns a promise of server-reported inventory counts with a two-minute cache. force defaults false; concurrent requests share network work. Updates only inventory state, and preserves the previous snapshot on failure.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "loadInventory",
+      "parameters": [
+        "force"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "if (!this.validId(id)) {\n  return this.$q.reject(this.makeError('pet', 'A valid integer pet ID is required.', 'INVALID_ID', 0));\n}\nconst key = String(id);\nif (this.detailRequests[key]) {\n  return this.detailRequests[key];\n}\nthis.detailErrors[key] = null;\nconst cached = this.detailCache[key];\nif (!force && this.fresh(cached)) {\n  this.detailLoading[key] = false;\n  return this.$q.when(cached.value);\n}\nconst generation = this.generation;\nthis.detailLoading[key] = true;\nconst request = this.$q.when().then(() => this.petstoreApi.getPetById({ petId: id })).then(response => {\n  const pet = this.normalizePet(response.data);\n  if (!pet) {\n    throw this.makeError('pet:' + key, 'The pet service returned an invalid pet record.', 'INVALID_RESPONSE', 0);\n  }\n  if (this.generation === generation) {\n    this.detailCache[key] = { value: pet, time: Date.now() };\n  }\n  return pet;\n}).catch(err => {\n  const error = this.requestError(err, 'pet:' + key, 'pet ' + key);\n  if (this.generation === generation) {\n    this.detailErrors[key] = error.message;\n    // A confirmed disappearance must not revive an older cached detail.\n    if (error.status === 404) {\n      delete this.detailCache[key];\n    }\n  }\n  throw error;\n}).finally(() => {\n  if (this.generation === generation && this.detailRequests[key] === request) {\n    this.detailLoading[key] = false;\n    delete this.detailRequests[key];\n  }\n});\nthis.detailRequests[key] = request;\nreturn request;",
+      "description": "Returns a promise of a normalized pet detail. Preserves numeric/string ID representation and never converts digit strings to Number. Separate per-ID two-minute cache and request deduplication. force defaults false. Per-ID detailLoading/detailErrors track context; rejects with PET_NOT_FOUND/status 404 for missing pets. Never changes the selected list.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "getPet",
+      "parameters": [
+        "id",
+        "force"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "// Epoch invalidation prevents pre-clear requests from touching newer state or pending maps.\nthis.generation += 1;\nthis.selection += 1;\nthis.statusCache = {};\nthis.detailCache = {};\nthis.inventoryCache = null;\nthis.statusRequests = {};\nthis.detailRequests = {};\nthis.inventoryRequest = null;\nthis.pets = [];\nthis.inventory = null;\nthis.lastUpdated = null;\nthis.loading = false;\nthis.error = null;\nthis.inventoryLoading = false;\nthis.inventoryError = null;\nthis.detailLoading = {};\nthis.detailErrors = {};",
+      "description": "Synchronously clears all caches, public snapshots and errors/flags. Invalidates outstanding response writes without cancelling requests; their original callers still receive fulfillment/rejection. Keeps currentStatus selected and makes subsequent calls start fresh.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "clearCache",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    }
+  ],
+  "visible": [
+    "pets",
+    "inventory",
+    "loading",
+    "error",
+    "lastUpdated",
+    "currentStatus",
+    "inventoryLoading",
+    "inventoryError",
+    "detailLoading",
+    "detailErrors",
+    "loadPets",
+    "loadInventory",
+    "getPet",
+    "clearCache"
+  ]
+}

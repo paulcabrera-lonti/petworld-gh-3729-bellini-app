@@ -1,0 +1,186 @@
+{
+  "bindings": [
+    {
+      "actions": [],
+      "autocomplete": [],
+      "default": "''",
+      "description": "Short metric label, visually displayed in uppercase without changing the supplied text.",
+      "example": "",
+      "group": "",
+      "includeAssets": false,
+      "label": "",
+      "name": "label",
+      "propertyType": "text",
+      "type": "<",
+      "visibleWhen": ""
+    },
+    {
+      "actions": [],
+      "autocomplete": [],
+      "default": "''",
+      "description": "Formatted metric string, such as 1,240 or $12,450.",
+      "example": "",
+      "group": "",
+      "includeAssets": false,
+      "label": "",
+      "name": "value",
+      "propertyType": "text",
+      "type": "<",
+      "visibleWhen": ""
+    },
+    {
+      "actions": [],
+      "autocomplete": [],
+      "default": "''",
+      "description": "Optional readable supporting text; omitted when empty.",
+      "example": "",
+      "group": "",
+      "includeAssets": false,
+      "label": "",
+      "name": "hint",
+      "propertyType": "text",
+      "type": "<",
+      "visibleWhen": ""
+    },
+    {
+      "actions": [],
+      "autocomplete": [],
+      "default": "''",
+      "description": "Optional icon identifier. Reserved: no core Icon renderer is available, so currently not rendered. No images or HTML injection are used.",
+      "example": "",
+      "group": "",
+      "includeAssets": false,
+      "label": "",
+      "name": "icon",
+      "propertyType": "text",
+      "type": "<",
+      "visibleWhen": ""
+    }
+  ],
+  "children": [
+    {
+      "attributes": [
+        {
+          "evaluate": "$ctrl.label || 'Metric'",
+          "property": "aria-label"
+        }
+      ],
+      "children": [
+        {
+          "children": [
+            {
+              "evaluate": true,
+              "name": "text",
+              "textContent": "$ctrl.label"
+            }
+          ],
+          "classList": [
+            "m-0",
+            "text-xs",
+            "font-medium",
+            "uppercase",
+            "tracking-wider",
+            "leading-5",
+            "text-slate-500",
+            "break-words"
+          ],
+          "layout": {
+            "cell": {
+              "growFactor": 0,
+              "mainSize": "auto",
+              "shrinkFactor": 0,
+              "type": "box-item"
+            }
+          },
+          "name": "p"
+        },
+        {
+          "children": [
+            {
+              "evaluate": true,
+              "name": "text",
+              "textContent": "$ctrl.value"
+            }
+          ],
+          "classList": [
+            "m-0",
+            "min-w-0",
+            "text-3xl",
+            "sm:text-4xl",
+            "font-semibold",
+            "tracking-tight",
+            "leading-tight",
+            "text-slate-900",
+            "tabular-nums",
+            "break-words"
+          ],
+          "layout": {
+            "cell": {
+              "growFactor": 0,
+              "mainSize": "auto",
+              "shrinkFactor": 0,
+              "type": "box-item"
+            }
+          },
+          "name": "p"
+        },
+        {
+          "children": [
+            {
+              "evaluate": true,
+              "name": "text",
+              "textContent": "$ctrl.hint"
+            }
+          ],
+          "classList": [
+            "m-0",
+            "text-sm",
+            "font-normal",
+            "leading-6",
+            "text-slate-500",
+            "break-words"
+          ],
+          "displayExpression": "$ctrl.hint",
+          "layout": {
+            "cell": {
+              "growFactor": 0,
+              "mainSize": "auto",
+              "shrinkFactor": 0,
+              "type": "box-item"
+            }
+          },
+          "name": "p"
+        }
+      ],
+      "classList": [
+        "w-full",
+        "min-w-0",
+        "box-border",
+        "rounded-xl",
+        "border",
+        "border-slate-200",
+        "bg-white",
+        "p-5",
+        "sm:p-6",
+        "text-slate-900"
+      ],
+      "comments": "Non-interactive metric surface. Built-in box layout owns spacing and arrangement; text nodes safely render all caller-provided strings. Icon intentionally omitted because no core Icon component was discovered.",
+      "layout": {
+        "container": {
+          "crossAxisAlignment": "stretch",
+          "gap": "0.5rem",
+          "mainAxisAlignment": "flex-start",
+          "orientation": "column",
+          "type": "box"
+        }
+      },
+      "name": "section"
+    }
+  ],
+  "description": "## Metric card\nReusable, full-width white metric card with a subtle border, restrained rounded corners, an uppercase muted label, a navy metric, and optional hint. Uses a built-in column box layout and Tailwind appearance utilities.\n\n### Inputs\n`label`, `value`, and `hint` are plain strings rendered as text, never injected HTML. `icon` is an optional string reserved for a supported core Icon renderer. Component discovery found no core Icon component, so this version intentionally omits the icon rather than substituting images, injected markup, or an interactive control.\n\n### Integration\nNo services or APIs. Width follows its parent; long content wraps on narrow screens. The metric remains a string so callers can supply currency, percentages, or other formatted values.",
+  "modules": [],
+  "name": "pw-stat-card",
+  "styles": [],
+  "type": "custom-component",
+  "variables": []
+}

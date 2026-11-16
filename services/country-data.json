@@ -1,0 +1,133 @@
+{
+  "description": "## Country data (`countryData`)\nShared country directory using the imported schema at `/apps/petworld/apis/countries-api`. Because metadata does not expose a valid opaque API ID, transport uses builtin `$http.post` against https://countries.trevorblades.com/ rather than pretending generated API injection works. Only `$http` and `$q` are injected; all network logic stays private to this service.\nPublic state: `countries`, `continents`, `loading`, `error`, `lastUpdated`. Public methods: `loadCountries(force=false)`, `loadContinents(force=false)`, `getCountry(code)`, `clearCache()`. Loads return digest-friendly Angular promises, cache successful results for ten minutes, and share pending requests even when forced. Continents are derived from fetched countries, not separately requested. Records and continents are sorted by name; languages contain language names. No fake data or travel rules. Failed refreshes retain previous data but reject with a safe error. Clearing cache invalidates outstanding results without cancelling HTTP requests; invalidated callers reject and cannot repopulate state.",
+  "name": "country-data",
+  "singleton": true,
+  "type": "app-service",
+  "variables": [
+    {
+      "name": "$http",
+      "type": "service"
+    },
+    {
+      "name": "$q",
+      "type": "service"
+    },
+    {
+      "description": "Cached normalized country records: code, name, native, emoji, capital, currency, phone, continentCode, continentName, and languages (string array of language names). Sorted by name; capital and currency default to 'Not listed' when absent. Treat as read-only.",
+      "name": "countries",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "Unique {code, name} continents derived from successful country loads, sorted by name. Treat as read-only.",
+      "name": "continents",
+      "type": "property",
+      "value": "[]"
+    },
+    {
+      "description": "True while the currently valid shared country request is pending; also covers continent loads.",
+      "name": "loading",
+      "type": "property",
+      "value": "false"
+    },
+    {
+      "description": "Safe user-facing message for the latest load failure, or null. GraphQL errors are checked even on HTTP 200; raw server errors are never exposed.",
+      "name": "error",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Unix timestamp in milliseconds of the last successful load, or null when uncached.",
+      "name": "lastUpdated",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Private ten-minute freshness interval.",
+      "name": "cacheTtlMs",
+      "type": "property",
+      "value": "600000"
+    },
+    {
+      "description": "Private shared Angular promise for the active fetch.",
+      "name": "inFlight",
+      "type": "property",
+      "value": "null"
+    },
+    {
+      "description": "Invalidates outstanding responses after clearCache().",
+      "name": "cacheGeneration",
+      "type": "property",
+      "value": "0"
+    },
+    {
+      "body": "// Share pending work before considering force or cache freshness.\nif (this.inFlight) {\n  return this.inFlight;\n}\nif (force !== true && this.lastUpdated !== null && Date.now() - this.lastUpdated < this.cacheTtlMs) {\n  return this.$q.when(this.countries);\n}\nconst generation = this.cacheGeneration;\nthis.loading = true;\nthis.error = null;\nconst query = 'query CountryDirectory { countries { code name native emoji capital currency phone continent { code name } languages { code name } } }';\nthis.inFlight = this.$q.when(null).then(() => {\n  if (generation !== this.cacheGeneration) {\n    throw new Error('Country cache was cleared.');\n  }\n  return this.$http.post('https://countries.trevorblades.com/', { query: query });\n}).then((response) => {\n  if (generation !== this.cacheGeneration) {\n    throw new Error('Country cache was cleared.');\n  }\n  // HTTP success is not GraphQL success: reject errors before reading data.\n  const envelope = response && response.data;\n  if (!envelope || (envelope.errors && (!Array.isArray(envelope.errors) || envelope.errors.length > 0)) || !envelope.data || !Array.isArray(envelope.data.countries)) {\n    throw new Error('Invalid country response.');\n  }\n  const records = envelope.data.countries.map((country) => {\n    if (!country || typeof country.code !== 'string' || typeof country.name !== 'string' || !country.continent || typeof country.continent.code !== 'string' || typeof country.continent.name !== 'string' || !Array.isArray(country.languages)) {\n      throw new Error('Invalid country record.');\n    }\n    return {\n      code: country.code,\n      name: country.name,\n      native: country.native,\n      emoji: country.emoji,\n      capital: country.capital && country.capital.trim() ? country.capital : 'Not listed',\n      currency: country.currency && country.currency.trim() ? country.currency : 'Not listed',\n      phone: country.phone,\n      continentCode: country.continent.code,\n      continentName: country.continent.name,\n      languages: country.languages.map((language) => {\n        if (!language || typeof language.name !== 'string') {\n          throw new Error('Invalid language record.');\n        }\n        return language.name;\n      })\n    };\n  }).sort((a, b) => a.name.localeCompare(b.name));\n  const continentMap = new Map();\n  records.forEach((country) => {\n    continentMap.set(country.continentCode, { code: country.continentCode, name: country.continentName });\n  });\n  const continents = Array.from(continentMap.values()).sort((a, b) => a.name.localeCompare(b.name));\n  // Commit only complete, successfully normalized results.\n  this.countries = records;\n  this.continents = continents;\n  this.lastUpdated = Date.now();\n  return this.countries;\n}).catch(() => {\n  if (generation !== this.cacheGeneration) {\n    throw new Error('Country cache was cleared. Please load again.');\n  }\n  this.error = 'Unable to load country data. Please try again.';\n  throw new Error(this.error);\n}).finally(() => {\n  // An older invalidated request must not reset a newer request's flags.\n  if (generation === this.cacheGeneration) {\n    this.loading = false;\n    this.inFlight = null;\n  }\n});\nreturn this.inFlight;",
+      "description": "Returns an Angular promise of normalized countries. Omitted force defaults to false; true bypasses the ten-minute cache but still shares any pending request. Updates public state on success; rejects with a safe Error on transport, GraphQL, or response failures.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "loadCountries",
+      "parameters": [
+        "force"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "return this.loadCountries(force).then(() => this.continents);",
+      "description": "Returns an Angular promise of unique {code, name} continents sorted by name, derived by loadCountries(force). Defaults force to false and shares the same cache, request, loading state, and errors.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "loadContinents",
+      "parameters": [
+        "force"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "const normalizedCode = String(code == null ? '' : code).trim().toUpperCase();\nreturn this.loadCountries(false).then((countries) => {\n  const country = countries.find((item) => item.code === normalizedCode);\n  if (!country) {\n    throw new Error('Country not found.');\n  }\n  return country;\n});",
+      "description": "Loads countries through the shared cache, then finds a country using a trimmed uppercase code. Returns an Angular promise of the normalized record; rejects with a not-found Error when no match exists.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "getCountry",
+      "parameters": [
+        "code"
+      ],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    },
+    {
+      "body": "this.cacheGeneration = this.cacheGeneration + 1;\nthis.inFlight = null;\nthis.countries = [];\nthis.continents = [];\nthis.lastUpdated = null;\nthis.error = null;\nthis.loading = false;",
+      "description": "Clears both cached arrays, timestamp, error, and loading state. Invalidates pending results so they cannot restore stale data or alter subsequent loads; does not cancel the underlying HTTP transport.",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "name": "clearCache",
+      "parameters": [],
+      "returnType": {
+        "name": "any"
+      },
+      "type": "method",
+      "watch": []
+    }
+  ],
+  "visible": [
+    "countries",
+    "continents",
+    "loading",
+    "error",
+    "lastUpdated",
+    "loadCountries",
+    "loadContinents",
+    "getCountry",
+    "clearCache"
+  ]
+}
